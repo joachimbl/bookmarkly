@@ -2,16 +2,16 @@
 
 To do:
 
-[x] Bootstrap
-
-[x] Font Awesome
-
-[ ] Embedly
-
-[] Upvote
-
-[ ] Tags and types collections
-
-[ ] Facebook Login -> subscribe to tag collection / ad to personal collection
-
-[ ] Chrome app
+- [x] Bootstrap
+-
+- [x] Font Awesome
+-
+- [ ] Embedly
+-
+- [ ] Upvote
+-
+- [ ] Tags and types collections
+-
+- [ ] Facebook Login -> subscribe to tag collection / ad to personal collection
+-
+- [ ] Chrome app
