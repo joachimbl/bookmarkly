@@ -14,6 +14,4 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
-//= require 'embedly'
-//= require 'json'
 //= require_tree .
