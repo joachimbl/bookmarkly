@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Urls</h1>
+<h1>Links</h1>
 
 <table class="gt-top-lg table">
   <thead>
@@ -13,20 +13,14 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
-        <td><a href="<%= url.path %>" target="_blank"> <%= url.path %> </a></td>
-        <td>
-          <%= link_to url do %>
-            <%= icon('rocket', '', class: 'btn text-success') %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to edit_url_path(url) do %>
-            <%= icon('pencil', '', class: 'btn text-primary') %>
-          <% end %>
-        </td>
+        <td><a href="<%= url.path %>" target="_blank" class="full-width block"> <%= url.path %> </a></td>
         <td>
           <%= link_to url, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <%= icon('close', '', class: 'btn text-danger') %>
+            <%= icon('close', '', class: 'btn text-muted pull-right') %>
+          <% end %>
+
+          <%= link_to edit_url_path(url) do %>
+            <%= icon('pencil', '', class: 'btn text-muted pull-right') %>
           <% end %>
         </td>
       </tr>
@@ -34,6 +28,6 @@
   </tbody>
 </table>
 
-<%= link_to 'New Url', new_url_path %>
+<%= link_to 'New Url', new_url_path, class: "btn btn-default" %>
 
 <%#= render "urls/form" %>
