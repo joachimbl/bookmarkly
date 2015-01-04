@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookmarkly</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container gt-top-lg">
+  <div class="row">
+    <div class="col-md-9">
+      <%= yield %>
+    </div>
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation" class="active"><a href="#">Tag</a></li>
+        <li role="presentation"><a href="#">Tag</a></li>
+        <li role="presentation"><a href="#">Tag</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

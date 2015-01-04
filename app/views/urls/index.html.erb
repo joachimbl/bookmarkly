@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Urls</h1>
+
+<table class="gt-top-lg table">
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><a href="<%= url.path %>" target="_blank"> <%= url.path %> </a></td>
+        <td>
+          <%= link_to url do %>
+            <%= icon('rocket', '', class: 'btn text-success') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to edit_url_path(url) do %>
+            <%= icon('pencil', '', class: 'btn text-primary') %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to url, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= icon('close', '', class: 'btn text-danger') %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Url', new_url_path %>
+
+<%#= render "urls/form" %>
