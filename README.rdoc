@@ -8,6 +8,8 @@ To do:
 
 [ ] Embedly
 
+[] Upvote
+
 [ ] Tags and types collections
 
 [ ] Facebook Login -> subscribe to tag collection / ad to personal collection
