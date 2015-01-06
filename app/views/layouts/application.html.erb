@@ -1,14 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bookmarkly</title>
+  <title>browzery</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag "app-icon.png", rel: 'apple-touch-icon', type: 'image/png' %>
+  <%= favicon_link_tag "favicon.ico", rel: 'shortcut icon', type: 'image/png' %>
 </head>
 <body>
+  <div class="container-fluid header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <%= link_to root_url do %>
+            <%= image_tag ('browzery-white.png'), class: "img-responsive gt-vrt-lg logo", title: "logo" %>
+          <% end %>
+        </div>
+        <div class="col-md-9">
+          <%= form_for Url.new do |f| %>
+            <form class="form-horizontal">
+              <div class="input-group input-group-lg">
+                <%= f.text_field :path, class: "form-control input-lg", placeholder: "http://" %>
+                <span class="input-group-btn">
+                  <%= f.submit "GO", class: "btn btn-primary btn-lg" %>
+                </span>
+              </div>
+              <span class="help-block">Insert links to articles, blogposts, images, videos etc</span>
+            </form>
+
+          <% end %>
+          <%#= render "urls/form" action: 'new' %>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="container gt-top-lg">
+  <div class="row">
+    <div class="col-xs-12">
+      <% if notice %>
+        <p class="well text-success"><%= notice %></p>
+        <%# TODO: URL Preview %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-3">
       <div class="well">

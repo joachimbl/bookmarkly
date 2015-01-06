@@ -9,3 +9,8 @@ To do:
 - [ ] Tags and types collections
 - [ ] Facebook Login -> subscribe to tag collection / ad to personal collection
 - [ ] Chrome app
+
+Nitty Gritty:
+
+- [ ] Different colors for alert messages
+- [ ] Merge identical urls
