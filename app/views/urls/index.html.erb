@@ -1,35 +1,19 @@
 <h1>Links</h1>
+<div class="row cards">
 
-<table class="gt-top-lg table">
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @urls.each do |url| %>
-      <tr>
-        <td><a href="<%= url.path %>" target="_blank" class="full-width block"> <%= url.path %> </a></td>
-        <td>
-          <%= link_to url, method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <% @urls.each do |url| %>
+    <% if url.try(:preview) %>
+      <div class="col-xs-6 col-sm-3 col-md-6">
+        <a href="<%= url.path %>" target="_blank" class="embedly-card">
+          <div class="card-load">
+            <%= icon 'spinner', '', class: 'fa-spin fa-2x' %>
+          </div>
+        </a>
+        <%= link_to url, method: :delete, data: { confirm: 'Are you sure?' } do %>
             <%= icon('close', '', class: 'btn text-muted pull-right') %>
           <% end %>
-
-          <%= link_to edit_url_path(url) do %>
-            <%= icon('pencil', '', class: 'btn text-muted pull-right') %>
-          <% end %>
-        </td>
-      </tr>
-      <% if url.try(:preview) %>
-        <tr>
-          <td><h2><%= url.preview['title']%></h2></td>
-          <td><p><%= url.preview['description']%></p></td>
-          <td><%= image_tag url.preview['thumbnail_url'], class: "img-responsive center" %>
-          </td>
-        </tr>
-      <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+
+</div>

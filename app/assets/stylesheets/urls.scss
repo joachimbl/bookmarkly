@@ -6,3 +6,32 @@
   background: #9d2362;
   padding-left: 15px;
 }
+
+.cards {
+  .card-load {
+    @extend .text-center;
+    @extend .panel;
+    @extend .panel-default;
+
+    padding-top: 130px;
+    min-height: 280px;
+    background: #f8f8f8;
+  }
+}
+
+#backgroundBlock {
+  position: relative;
+}
+#backgroundBlock span {
+  color: #fff;
+  font-weight: bold;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+}
+#backgroundBlock img {
+  position: absolute;
+  top: 0;
+  left:0;
+  opacity: 0;
+}

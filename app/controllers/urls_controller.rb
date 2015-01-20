@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.all
+    @urls = Url.all.order("created_at DESC")
     # raise @urls.first.preview.inspect
   end
 
