@@ -4,6 +4,7 @@ class Url < ActiveRecord::Base
     @preview unless @preview.nil?
     params = {}
     params[:url] = self.path
+    params[:key] = 'a99fcfdb038a42ad955251bdc0660584'
 
     server = Net::HTTP.new("api.embed.ly")
     uri = URI("http://api.embed.ly/1/oembed")
