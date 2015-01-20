@@ -22,12 +22,14 @@
           <% end %>
         </td>
       </tr>
-      <tr>
-        <td><h2><%= url.preview['title']%></h2></td>
-        <td><p><%= url.preview['description']%></p></td>
-        <td><%= image_tag url.preview['thumbnail_url'], class: "img-responsive center" %>
-        </td>
-      </tr>
+      <% if url.try(:preview) %>
+        <tr>
+          <td><h2><%= url.preview['title']%></h2></td>
+          <td><p><%= url.preview['description']%></p></td>
+          <td><%= image_tag url.preview['thumbnail_url'], class: "img-responsive center" %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
