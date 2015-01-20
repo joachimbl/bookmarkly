@@ -5,6 +5,7 @@ class UrlsController < ApplicationController
   # GET /urls.json
   def index
     @urls = Url.all
+    # raise @urls.first.preview.inspect
   end
 
   # GET /urls/1
