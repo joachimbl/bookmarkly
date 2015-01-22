@@ -3,15 +3,42 @@
 
   <% @urls.each do |url| %>
     <% if url.try(:preview) %>
-      <div class="col-xs-6 col-sm-3 col-md-6">
-        <a href="<%= url.path %>" target="_blank" class="embedly-card">
-          <div class="card-load">
-            <%= icon 'spinner', '', class: 'fa-spin fa-2x' %>
+      <div class="col-xs-6 col-sm-3 col-md-4">
+
+          <div class="panel panel-default card">
+            <div class="panel-heading">
+              <%= image_tag url.preview['favicon_url'], class: "img-responsive favicon" %>
+              <h2 class="panel-title">
+                  <%= url.preview['provider_name'] %>
+              </h2>
+              <%= url.preview['author_name'] %>
+              <div class="vote pull-right text-center">
+                <%= icon 'caret-up' %>
+                <p>89</p>
+              </div>
+            </div>
+            <a href="<%= url.path %>" target="_blank">
+              <%= image_tag url.preview['thumbnail_url'], class: "img-responsive center-block" %>
+
+              <div class="panel-body">
+
+                <h2 class="title"><%= url.preview['title']%></h2>
+                <p><%= url.preview['description']%></p>
+                <p><%= url.preview['lead']%></p>
+
+              </div>
+            </a>
+
+            <%= link_to url, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <%= icon('close', '', class: 'btn text-muted pull-right') %>
+            <% end %>
+
+            <%= link_to edit_url_path(url) do %>
+              <%= icon('pencil', '', class: 'btn text-muted pull-right') %>
+            <% end %>
+
           </div>
-        </a>
-        <%= link_to url, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <%= icon('close', '', class: 'btn text-muted pull-right') %>
-          <% end %>
+
       </div>
     <% end %>
   <% end %>

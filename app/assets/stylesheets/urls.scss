@@ -19,9 +19,33 @@
   }
 }
 
+.card {
+  @extend .relative;
+}
+
+.vote {
+  @extend .absolute;
+
+  background: #fff;
+  color: $brand-primary;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  top: 4px;
+  right: 5px;
+
+  p {
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    margin-top: -6px;
+  }
+}
+
 #backgroundBlock {
   position: relative;
 }
+
 #backgroundBlock span {
   color: #fff;
   font-weight: bold;
@@ -29,6 +53,7 @@
   text-align: center;
   display: block;
 }
+
 #backgroundBlock img {
   position: absolute;
   top: 0;
