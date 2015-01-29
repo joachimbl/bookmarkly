@@ -11,7 +11,7 @@ class Link < ActiveRecord::Base
     self.favicon_url = response.favicon_url
     self.provider_name = response.provider_name
     self.provider_url = response.provider_url
-    self.media_type = response.media.type.to_sym
+    self.media_type = response.media.type
     self.html = response.media.html if %w(video rich).include?(media_type)
     self.thumbnail_url = response.images.first['url']
   end
