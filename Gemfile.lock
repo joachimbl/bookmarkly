@@ -61,6 +61,10 @@ GEM
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     dotenv (1.0.2)
+    embedly (1.9.1)
+      json
+      oauth
+      querystring
     erubis (2.7.0)
     execjs (2.2.2)
     font-awesome-sass (4.2.2)
@@ -91,7 +95,9 @@ GEM
     multi_json (1.10.1)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
+    oauth (0.4.7)
     pg (0.17.1)
+    querystring (0.1.0)
     rack (1.6.0)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -177,6 +183,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.1)
   byebug
   coffee-rails (~> 4.1.0)
+  embedly
   font-awesome-sass (~> 4.2.0)
   foreman
   jbuilder (~> 2.0)

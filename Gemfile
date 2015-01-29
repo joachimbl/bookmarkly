@@ -35,6 +35,8 @@ gem 'unicorn'
 
 gem 'foreman'
 
+gem 'embedly'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
