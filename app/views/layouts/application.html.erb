@@ -19,10 +19,10 @@
           <% end %>
         </div>
         <div class="col-md-9">
-          <%= form_for Url.new do |f| %>
+          <%= form_for Link.new do |f| %>
             <form class="form-horizontal">
               <div class="input-group input-group-lg">
-                <%= f.text_field :path, class: "form-control input-lg", placeholder: "http://" %>
+                <%= f.text_field :url, class: "form-control input-lg", placeholder: "http://" %>
                 <span class="input-group-btn">
                   <%= f.submit "GO", class: "btn btn-primary btn-lg" %>
                 </span>

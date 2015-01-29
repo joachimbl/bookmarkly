@@ -13,10 +13,21 @@
 
 ActiveRecord::Schema.define(version: 20150104165059) do
 
-  create_table "urls", force: :cascade do |t|
-    t.string   "path"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "links", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "url"
+    t.string   "favicon_url"
+    t.string   "provider_name"
+    t.string   "provider_url"
+    t.text     "html"
+    t.string   "thumbnail_url"
+    t.integer  "media_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end
