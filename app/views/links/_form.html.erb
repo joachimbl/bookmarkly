@@ -1,11 +1,11 @@
-<%= form_for(@url) do |f| %>
-  <% if @url.errors.any? %>
+<%= form_for(@link) do |f| %>
+  <% if @link.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@url.errors.count, "error") %> prohibited this url from being saved:</h2>
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this url from being saved:</h2>
 
       <ul>
-      <% @url.errors.full_messages.each do |message| %>
-        <li><%= message %> hej</li>
+      <% @link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
       </ul>
     </div>
@@ -14,8 +14,7 @@
   <form class="form-horizontal">
     <div class="form-group form-group">
       <div class="col-sm-10">
-        <%= f.text_field :path, class: "form-control input-lg", placeholder: "http://" %>
-        <span class="help-block">Insert links to articles, blogposts, images, videos etc</span>
+        <%= f.text_field :url, class: "form-control input-lg", placeholder: "http://" %>
       </div>
         <%= f.submit "GO", class: "btn btn-success btn-lg col-sm-2" %>
     </div>

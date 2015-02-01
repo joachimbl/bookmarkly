@@ -7,6 +7,10 @@
   padding-left: 15px;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .cards {
   .card-load {
     @extend .text-center;
@@ -21,6 +25,14 @@
 
 .card {
   @extend .relative;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  a {
+    color: #222;
+  }
 }
 
 .vote {
@@ -42,21 +54,14 @@
   }
 }
 
-#backgroundBlock {
-  position: relative;
+.title {
+  @extend .text-uppercase;
 }
 
-#backgroundBlock span {
-  color: #fff;
-  font-weight: bold;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
+.description {
+  word-wrap: break-word;
 }
 
-#backgroundBlock img {
-  position: absolute;
-  top: 0;
-  left:0;
-  opacity: 0;
+.panel-title {
+  font-size: 14px;
 }

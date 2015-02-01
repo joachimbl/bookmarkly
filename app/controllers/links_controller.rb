@@ -34,7 +34,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
     if @link.update(link_params)
-      redirect_to @link, notice: 'Link was successfully updated.'
+      redirect_to root_url, notice: 'Link was successfully updated.'
     else
       render :edit
     end
@@ -44,7 +44,12 @@ class LinksController < ApplicationController
   # DELETE /links/1.json
   def destroy
     @link.destroy
-    redirect_to links_link, notice: 'Link was successfully destroyed.'
+    redirect_to root_url, notice: 'Link was successfully destroyed.'
+  end
+
+  def external_link
+    render :layout => "external"
+    external_url= [params[:link]]
   end
 
 private
