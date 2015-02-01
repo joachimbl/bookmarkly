@@ -1,0 +1,61 @@
+class LinksController < ApplicationController
+  before_action :set_link, only: [:show, :edit, :update, :destroy]
+
+  # GET /links
+  def index
+    @links = Link.all.order("created_at DESC")
+  end
+
+  # GET /links/1
+  def show
+  end
+
+  # GET /links/new
+  def new
+    @link = Link.new
+  end
+
+  # GET /links/1/edit
+  def edit
+  end
+
+  # POST /links
+  def create
+    @link = Link.new(link_params)
+
+    if @link.save
+      redirect_to root_url, notice: 'Link was successfully created.', class: 'well'
+    else
+      render :new
+    end
+  end
+
+  # PATCH/PUT /links/1
+  # PATCH/PUT /links/1.json
+  def update
+    if @link.update(link_params)
+      redirect_to @link, notice: 'Link was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  # DELETE /links/1
+  # DELETE /links/1.json
+  def destroy
+    @link.destroy
+    redirect_to links_link, notice: 'Link was successfully destroyed.'
+  end
+
+private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_link
+    @link = Link.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def link_params
+    params.require(:link).permit(:url)
+  end
+end

@@ -1,0 +1,42 @@
+<h1>Links</h1>
+<div class="row cards">
+  <% @links.each do |link| %>
+    <div class="col-xs-6 col-sm-3 col-md-4">
+      <div class="panel panel-default card">
+        <div class="panel-heading">
+          <%= image_tag link.favicon_url, class: "img-responsive favicon" %>
+
+          <h2 class="panel-title">
+            <%= link.media_type %>
+            <%= link.provider_name %>
+          </h2>
+
+          <div class="vote pull-right text-center">
+            <%= icon 'caret-up' %>
+            <p>89</p>
+          </div>
+        </div>
+
+        <%= link_to link.url, target: '_blank' do %>
+          <%= raw link.html %>
+          <%= image_tag link.thumbnail_url, class: "img-responsive center-block" %>
+
+          <div class="panel-body">
+
+            <h2 class="title"><%= link.title %></h2>
+            <p><%= link.description %></p>
+
+          </div>
+        <% end %>
+
+        <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <%= icon('close', '', class: 'btn text-muted pull-right') %>
+        <% end %>
+
+        <%= link_to edit_link_path(link) do %>
+          <%= icon('pencil', '', class: 'btn text-muted pull-right') %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
