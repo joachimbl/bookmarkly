@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>browzery</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -47,18 +47,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3">
-      <div class="well">
-        <h4>Popular collections</h4>
-        <hr>
-        <ul class="nav nav-pills nav-stacked">
-          <li role="presentation" class="active"><a href="#">Tag</a></li>
-          <li role="presentation"><a href="#">Tag</a></li>
-          <li role="presentation"><a href="#">Tag</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
       <%= yield %>
     </div>
   </div>
