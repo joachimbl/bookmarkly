@@ -1,7 +1,10 @@
-$brand-primary:           #9d2362;
-$brand-success:           #f1c40f;
+$brand-primary:           #27ae60;
+$brand-success:           #27ae60;
+$brand-darken:            lighten(#bdc3c7, 10%);
 
 $font-size-h2:            18px;
+
+$body-bg:                 #ecf0f1;
 
 $font-family-sans-serif:  "Hind", Helvetica, Arial, sans-serif !default;
 $font-family-base:        $font-family-sans-serif !default;

@@ -52,6 +52,18 @@ class LinksController < ApplicationController
     external_url= [params[:link]]
   end
 
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
 private
 
   # Use callbacks to share common setup or constraints between actions.

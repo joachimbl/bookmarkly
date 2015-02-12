@@ -33,6 +33,8 @@ gem 'foreman'
 
 gem 'embedly'
 
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
