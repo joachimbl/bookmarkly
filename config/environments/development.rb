@@ -39,7 +39,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  # Devise mail config
-  # Change on Production
+  # Setup ActionMailer with MailCatcher
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.smtp_settings = { host: 'localhost', port: 1025 }
 end

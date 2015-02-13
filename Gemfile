@@ -49,6 +49,9 @@ group :development, :test do
   gem 'spring'
 
   gem "better_errors"
+
+  # Catch and show emails locally
+  gem 'mailcatcher'
 end
 
 group :production do
