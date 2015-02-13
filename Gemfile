@@ -35,6 +35,8 @@ gem 'embedly'
 
 gem 'devise'
 
+gem 'acts-as-taggable-on'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

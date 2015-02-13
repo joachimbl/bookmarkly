@@ -16,7 +16,7 @@
           -->
         </div>
 
-        <%= link_to link.url, target: '_blank' do %>
+        <%= link_to edit_link_path(link) do %>
 
           <div class="row">
             <div class="col-xs-5 col-sm-12">
@@ -35,6 +35,7 @@
                   <%= link.description.to_s.truncate(140) %>
                 </p>
                 <%= link.users.map(&:email) %>
+                <%= link.tags.map(&:name) %>
                 <div class="hidden-xs">
                   <% if user_signed_in? %>
 

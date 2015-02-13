@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  # Extensions
+  acts_as_tagger
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
