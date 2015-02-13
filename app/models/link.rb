@@ -1,4 +1,12 @@
 class Link < ActiveRecord::Base
+  # Associations
+  has_and_belongs_to_many :users
+
+  # Validations
+  validates :url, presence: true, uniqueness: true
+  validates :users, presence: true
+
+  # Callbacks
   before_create :fetch_from_embedly
 
   enum media_type: [:other, :photo, :video, :rich]

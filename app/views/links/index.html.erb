@@ -34,6 +34,7 @@
                 <p class="hidden-xs description gt-top">
                   <%= link.description.to_s.truncate(140) %>
                 </p>
+                <%= link.users.map(&:email) %>
                 <div class="hidden-xs">
                   <% if user_signed_in? %>
 

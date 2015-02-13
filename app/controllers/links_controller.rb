@@ -21,7 +21,7 @@ class LinksController < ApplicationController
 
   # POST /links
   def create
-    @link = Link.new(link_params)
+    @link = Link.new(link_create_params)
 
     if @link.save
       redirect_to root_url, notice: 'Link was successfully created.', class: 'well'
@@ -74,5 +74,11 @@ private
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
     params.require(:link).permit(:url)
+  end
+
+  def link_create_params
+    link_params.tap do |whitelist|
+      whitelist[:users] = [current_user]
+    end
   end
 end
