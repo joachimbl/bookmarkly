@@ -21,9 +21,17 @@ class Link < ActiveRecord::Base
     self.provider_url = response.provider_url
     self.media_type = response.media.type
     self.html = response.media.html if %w(video rich).include?(media_type)
-    self.thumbnail_url = response.images.first['url']
+    self.thumbnail_url = response.images.first['url'] if response.images.any?
   end
 
+  def unique?
+    !self.class.exists?(url: url)
+  end
+
+  def merge_with_existing
+    existing_link = self.class.where(url: url).first
+    existing_link.users << users
+  end
 
   private
 

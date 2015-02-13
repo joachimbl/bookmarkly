@@ -23,8 +23,14 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_create_params)
 
-    if @link.save
-      redirect_to root_url, notice: 'Link was successfully created.', class: 'well'
+    if @link.unique?
+      if @link.save
+        redirect_to root_url, notice: 'Link was successfully created.', class: 'well'
+      else
+        render :new
+      end
+    elsif @link.merge_with_existing
+      redirect_to root_url, notice: 'Link already exists.', class: 'well'
     else
       render :new
     end
