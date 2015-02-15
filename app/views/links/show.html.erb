@@ -1,8 +1,54 @@
 
-<p>
-  <strong>Path:</strong>
-  <%= @link.path %>
-</p>
+  <div class="row cards">
 
-<%= link_to 'Edit', edit_url_path(@url) %> |
-<%= link_to 'Back', urls_path %>
+      <div class="col-sm-6">
+
+        <%= link_to url_with_protocol(@link.url), :target => '_blank' do %>
+          <div class="panel panel-default card">
+            <div class="panel-heading">
+              <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+              <h1 class="panel-title gt-reset text-inline">
+                <%= @link.provider_name %>
+              </h1>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-5 col-sm-12">
+                <% if @link.html.present? == true %>
+                  <div class="embed-responsive embed-responsive-4by3">
+                    <%= raw @link.html %>
+                  </div>
+                <% else %>
+                  <%= image_tag @link.thumbnail_url, class: "img-responsive center-block" %>
+                <% end %>
+              </div>
+              <div class="col-xs-7 col-sm-12">
+                <div class="panel-body">
+                  <h2 class="title gt-reset"><%= @link.title %></h2>
+                  <p class="hidden-xs description gt-top">
+                    <%= @link.description.to_s.truncate(140) %>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <strong>Shared by:</strong>
+        <%= @link.users.map(&:email) %>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="tags">
+          <h2>Tags</h2>
+          <%= @link.tags.map(&:name) %>
+        </div>
+
+        <div class="comments">
+          <h2>Comments</h2>
+        </div>
+      </div>
+
+
+  </div>

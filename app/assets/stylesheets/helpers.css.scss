@@ -259,21 +259,10 @@
     justify-content: center;
   }
 
-/* changes */
+/* =========== effects ========= */
 
-.header {
-  background: #9d2362;
-
-  .input-group {
-    margin-top: 40px;
-  }
-
-  .help-block {
-    color: #eee;
-  }
-}
-
-.btn-primary {
-  color: #eee;
-  border-color: #eee;
+.paper-shadow {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border-radius: 2px;
+  border: none;
 }

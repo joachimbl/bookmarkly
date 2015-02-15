@@ -8,6 +8,7 @@ class LinksController < ApplicationController
 
   # GET /links/1
   def show
+    @link = Link.find(params[:id])
   end
 
   # GET /links/new
@@ -25,12 +26,12 @@ class LinksController < ApplicationController
 
     if @link.unique?
       if @link.save
-        redirect_to root_url, notice: 'Link was successfully created.', class: 'well'
+        redirect_to link_path(@link), notice: 'Link was successfully created.', class: 'well'
       else
         render :new
       end
     elsif @link.merge_with_existing
-      redirect_to root_url, notice: 'Link already exists.', class: 'well'
+      redirect_to link_path(@link), notice: 'Link already exists.', class: 'well'
     else
       render :new
     end

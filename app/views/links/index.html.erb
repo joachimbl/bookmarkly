@@ -5,20 +5,14 @@
         <div class="panel-heading">
           <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
           <h3 class="panel-title gt-reset text-inline">
-            <%= link.provider_name %>
+            <%= link_to link.provider_name, link.provider_url %>
           </h3>
 
-          <!-- TODO: Add when votesystem is done
-          <div class="vote pull-right text-center">
-            <%= icon 'caret-up' %>
-            <p>89</p>
-          </div>
-          -->
         </div>
 
-        <%= link_to edit_link_path(link) do %>
+        <%= link_to url_with_protocol(link.url), :target => '_blank' do %>
 
-          <div class="row">
+          <div class="row opacity-hover">
             <div class="col-xs-5 col-sm-12">
               <% if link.html.present? == true %>
                 <div class="embed-responsive embed-responsive-4by3">
@@ -34,25 +28,22 @@
                 <p class="hidden-xs description gt-top">
                   <%= link.description.to_s.truncate(140) %>
                 </p>
-                <%= link.users.map(&:email) %>
                 <%= link.tags.map(&:name) %>
-                <div class="hidden-xs">
-                  <% if user_signed_in? %>
-
-                    <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <%= icon('close', '', class: 'btn text-muted pull-right') %>
-                    <% end %>
-
-                    <%= link_to edit_link_path(link) do %>
-                      <%= icon('pencil', '', class: 'btn text-muted pull-right') %>
-                    <% end %>
-                  <% end %>
-                </div>
               </div>
             </div>
           </div>
-
         <% end %>
+
+        <div class="panel-footer opacity-hover">
+          <h3 class="panel-title">
+            <%= link_to link_path(link) do %>
+              <div class="pull-left">Comments</div>
+              <div class="pull-right">0</div>
+              <div class="clearfix"></div>
+            <% end %>
+          </h3>
+        </div>
+
       </div>
     </div>
   <% end %>

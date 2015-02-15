@@ -26,17 +26,15 @@ a:hover {
     min-height: 280px;
     background: #f8f8f8;
   }
+
+  a {
+    color: #222;
+  }
 }
 
 .card {
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  border-radius: 2px;
-  border: none;
+  @extend .paper-shadow;
   @extend .relative;
-
-  &:hover {
-    opacity: 0.8;
-  }
 
   a {
     color: #222;
@@ -80,4 +78,26 @@ a:hover {
       margin: 9px;
     }
   }
+}
+
+.opacity-hover {
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.header {
+
+  .input-group {
+    margin-top: 40px;
+  }
+
+  .help-block {
+    color: #eee;
+  }
+}
+
+.btn-primary {
+  color: #eee;
+  border-color: #eee;
 }
