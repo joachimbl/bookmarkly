@@ -106,6 +106,8 @@ GEM
       skinny (~> 0.2.3)
       sqlite3 (~> 1.3)
       thin (~> 1.5.0)
+    masonry-rails (0.2.4)
+      railties
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.0)
@@ -221,6 +223,7 @@ DEPENDENCIES
   foreman
   jquery-rails
   mailcatcher
+  masonry-rails (~> 0.2.4)
   pg
   rails (= 4.2.0)
   rails_12factor

@@ -17,3 +17,9 @@
 //= require_tree .
 //= require embedly
 //= require colorpreview
+//= require masonry
+//= require masonry/jquery.masonry
+//= require masonry/jquery.infinitescroll.min
+//= require masonry/modernizr-transitions
+//= require masonry/box-maker
+//= require masonry/jquery.loremimages.min

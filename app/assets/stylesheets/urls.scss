@@ -101,3 +101,8 @@ a:hover {
   color: #eee;
   border-color: #eee;
 }
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
