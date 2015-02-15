@@ -1,5 +1,58 @@
-<p>Welcome <%= @email %>!</p>
+<link href='http://fonts.googleapis.com/css?family=Hind:400,700' rel='stylesheet' type='text/css'>
 
-<p>You can confirm your account email through the link below:</p>
+<table width="100%" border="0" cellspacing="0" cellpadding="20px" style="background-color:#ecf0f1;">
+  <tbody>
+    <tr>
+      <td style="background-color: #27ae60; ">
+        <table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td width="476" height="20" valign="top"></td>
+            </tr>
+            <tr>
+              <td align="left">
+                <%= link_to "http://www.browzery.com" do %>
+                  <%= image_tag ('http://www.browzery.com/assets/browzery-white-0de9c9c8c7aba37b4f4b3d0e4e47e2d4.png'), title: "logo", width: "270px"  %>
+                <% end %>
+              </td>
+              <td valign="left" style="color: #ffffff;">
+                <h2>Welcome <%= @email %>!</h2>
+              </td>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+
+        <table width="620" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tbody>
+            <tr>
+              <td style="background-color: #ffffff; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; -khtml-border-radius: 2px;">
+                <table width="100%" border="0" cellspacing="0" cellpadding="20">
+                  <tbody>
+                    <tr>
+                      <td valign="top" width="100%">
+
+                        <p>You can confirm your account email through the link below:</p>
+
+                        <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td height="40">&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </td>
+    </tr>
+
+  </tbody>
+</table>

@@ -10,95 +10,25 @@
   <%= favicon_link_tag "favicon.ico", rel: 'shortcut icon', type: 'image/png' %>
 </head>
 <body>
-  <div class="container-fluid header">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <%= link_to root_url do %>
-            <%= image_tag ('browzery-white.png'), class: "img-responsive gt-vrt-lg logo", title: "logo" %>
-          <% end %>
-        </div>
-        <div class="col-md-9">
-          <% if user_signed_in? %>
-
-            <%= form_for Link.new do |f| %>
-              <form class="form-horizontal">
-                <div class="input-group input-group-lg">
-                  <%= f.text_field :url, class: "form-control input-lg", placeholder: "http://" %>
-                  <span class="input-group-btn">
-                    <%= f.submit "GO", class: "btn btn-primary btn-lg" %>
-                  </span>
-                </div>
-                <span class="help-block">Insert links to articles, blogposts, images, videos etc</span>
-              </form>
-            <% end %>
-
-          <% else %>
-
-            <div class="pull-right gt-top">
-              <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-primary gt-right' %>
-
-              <%= link_to 'Register', new_user_registration_path, class: 'btn btn-default' %>
-            </div>
-
-          <% end %>
-
-          <%#= render "urls/form" action: 'new' %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="container-fluid secondary-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="pull-left">
-            <span class="label label-default">#tag</span>
-          </div>
-
-          <% if user_signed_in? %>
-            <div class="btn-group pull-right">
-              <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-                <%= icon 'user', '', class: 'fa-fw' %> <%= current_user.email %></a>
-              <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-                <span class="fa fa-caret-down"></span></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to edit_user_registration_path do %>
-                    <%= icon 'cog', '', class: 'fa-fw' %> Settings</a>
-                  <% end %>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to destroy_user_session_path, :method => :delete do %>
-                    <%= icon 'ban', '', class: 'fa-fw' %> Sign out</a>
-                  <% end %>
-                </li>
-              </ul>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <%= render 'site/header' %>
+  <%= render 'site/secondary_header' %>
 
   <div class="container gt-top-lg">
+
     <div class="row">
       <div class="col-xs-12">
         <% if notice %>
           <p class="well text-success"><%= notice %></p>
-          <%# TODO: URL Preview %>
         <% end %>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-12">
-        <%= yield %>
+        <%= content_for?(:second_level_layout) ? yield(:second_level_layout) : yield %>
       </div>
     </div>
+
   </div>
 
 </body>

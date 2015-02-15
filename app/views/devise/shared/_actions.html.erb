@@ -1,6 +1,6 @@
 <% if controller_name != 'sessions' %>
   <%= link_to 'Sign in', new_session_path(resource_name), class: "btn btn-default pull-right" %>
-  <small class="pull-right gutter-right gutter-top">Already signed up? </small>
+  <small class="pull-right gutter-right gutter-top">Already have an account? </small>
 <% end -%>
 
 <% if devise_mapping.registerable? && controller_name != 'registrations' %>

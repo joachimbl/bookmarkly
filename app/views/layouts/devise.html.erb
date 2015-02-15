@@ -1,0 +1,30 @@
+<% content_for :second_level_layout do %>
+
+  <div class="container login-form">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="panel panel-default gt-top-lg">
+          <div class="panel-heading">
+            <h1 class="h4 pull-left"><%= yield :title %></h1>
+            <div class="actions">
+              <%= yield :actions %>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-sm-12">
+
+                <%= yield %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<%= render :template => 'layouts/application' %>

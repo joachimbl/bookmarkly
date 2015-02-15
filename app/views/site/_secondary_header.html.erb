@@ -1,0 +1,33 @@
+<div class="container-fluid secondary-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="pull-left">
+          <span class="label label-default">#tag</span>
+        </div>
+
+        <% if user_signed_in? %>
+          <div class="btn-group pull-right">
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= icon 'user', '', class: 'fa-fw' %> <%= current_user.email %></a>
+            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="fa fa-caret-down"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <%= icon 'cog', '', class: 'fa-fw' %> Settings</a>
+                <% end %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %>
+                  <%= icon 'ban', '', class: 'fa-fw' %> Sign out</a>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
