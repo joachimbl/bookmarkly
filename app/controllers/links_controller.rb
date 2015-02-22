@@ -29,12 +29,12 @@ class LinksController < ApplicationController
 
     if @link.unique?
       if @link.save
-        redirect_to link_path(@link), notice: 'Link was successfully created.', class: 'well'
+        redirect_to edit_link_path(@link), notice: 'Link was successfully created.', class: 'well'
       else
         render :new
       end
     elsif existing_link = @link.merge_with_existing
-      redirect_to link_path(existing_link), notice: 'Link already exists.', class: 'well'
+      redirect_to edit_link_path(existing_link), notice: 'Link already exists.', class: 'well'
     else
       render :new
     end

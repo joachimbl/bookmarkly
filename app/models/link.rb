@@ -6,7 +6,7 @@ class Link < ActiveRecord::Base
   has_and_belongs_to_many :users, uniq: true
 
   # Validations
-  validates :url, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: true, url: true
   validates :users, presence: true
 
   # Callbacks

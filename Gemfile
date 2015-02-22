@@ -41,6 +41,8 @@ gem 'masonry-rails', '~> 0.2.4'
 
 gem 'chosen-rails'
 
+gem "validate_url"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

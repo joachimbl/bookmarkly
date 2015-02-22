@@ -41,13 +41,12 @@
   </div>
 
   <div class="col-sm-6">
-    <%= form_for(@link) do |f| %>
-      <div class="tags">
-        <h2>Tags</h2>
-        <%= f.collection_select :tag_ids, ActsAsTaggableOn::Tag.all, :id, :name, {}, class: "form-control input-lg", multiple: true, data: { input: 'chosen' } %>
-        <%= f.submit "GO", class: "btn btn-success btn-lg col-sm-2" %>
-      </div>
-    <% end %>
+    <div class="tags">
+      <h2>Tags</h2>
+      <%= @link.tags.map do |tag| %>
+        <% link_to tag.name, links_path(tags: tag.name) %>
+      <% end.join(', ').html_safe %>
+    </div>
 
     <div class="comments">
       <h2>Comments</h2>
