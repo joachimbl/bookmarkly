@@ -45,6 +45,8 @@ gem 'validate_url'
 
 gem 'awesome_nested_set'
 
+gem 'omniauth-facebook'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

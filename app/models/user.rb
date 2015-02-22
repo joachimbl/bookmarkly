@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   acts_as_tagger
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   # Associations
   has_and_belongs_to_many :links, uniq: true
@@ -30,6 +30,27 @@ class User < ActiveRecord::Base
       where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
     else
       where(conditions.to_h).first
+    end
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.username = auth.info.name
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+        user.email = data['email'] if user.email.blank?
+        user.username = data['name'] if user.username.blank?
+        user.provider = session['devise.facebook_data']['provider']
+        user.uid = session['devise.facebook_data']['uid']
+        user.valid?
+      end
     end
   end
 end
