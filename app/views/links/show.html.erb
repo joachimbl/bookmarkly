@@ -2,7 +2,7 @@
 
   <div class="col-sm-6">
 
-    <%= link_to url_with_protocol(@link.url), :target => '_blank' do %>
+    <%= link_to url_with_protocol(@link.url), :target => '_blank', :rel => 'nofollow' do %>
       <div class="panel panel-default card">
         <div class="panel-heading">
           <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
