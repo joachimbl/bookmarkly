@@ -64,6 +64,24 @@ a:hover {
   @extend .text-uppercase;
 }
 
+.tags {
+  @extend .relative;
+
+  .edit-tags {
+    @extend .absolute;
+
+    right: 0;
+    top: 0;
+    display: none;
+  }
+
+  &:hover {
+    .edit-tags {
+      display: block;
+    }
+  }
+}
+
 .description {
   word-wrap: break-word;
 }
