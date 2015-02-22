@@ -39,6 +39,9 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
+  # Raise error when submitting unpermitted parameters
+  config.action_controller.action_on_unpermitted_parameters = :raise
+
   # Setup ActionMailer with MailCatcher
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }

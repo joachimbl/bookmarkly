@@ -39,6 +39,8 @@ gem 'acts-as-taggable-on'
 
 gem 'masonry-rails', '~> 0.2.4'
 
+gem 'chosen-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
