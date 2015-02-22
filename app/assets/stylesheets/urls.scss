@@ -39,28 +39,39 @@ a:hover {
   a {
     color: #222;
   }
+
+  &:hover {
+    .lead-img, .title, .description {
+      opacity: 0.6;
+    }
+  }
 }
 
 .vote {
-  @extend .absolute;
+  @extend .pull-right;
 
-  background: #fff;
-  color: $brand-primary;
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  top: 4px;
-  right: 5px;
+  text-align: right;
 
-  p {
-    font-size: 11px;
-    margin: 0;
-    padding: 0;
-    margin-top: -6px;
+  .badge {
+    color: #fff;
+
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.voted {
+  &:before {
+    @extend .fa;
+
+    color: $brand-primary;
+    content: "\f00c";
   }
 }
 
 .title {
+  @extend .h2;
   @extend .text-uppercase;
 }
 
