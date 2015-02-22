@@ -43,9 +43,7 @@
   <div class="col-sm-6">
     <div class="tags">
       <h2>Tags</h2>
-      <%= @link.tags.map do |tag| %>
-        <% link_to tag.name, links_path(tags: tag.name) %>
-      <% end.join(', ').html_safe %>
+      <%= render @link.tags %>
 
       <div class="hidden-xs">
         <% if user_signed_in? %>

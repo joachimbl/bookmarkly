@@ -26,10 +26,8 @@
             <p class="hidden-xs description gt-top">
               <%= link.description.to_s.truncate(140) %>
             </p>
-            <%= link.tags.map(&:name).join(', ') %>
 
-            <span class="label label-primary">Primary</span>
-
+            <%= render link.tags %>
           </div>
         </div>
       </div>
