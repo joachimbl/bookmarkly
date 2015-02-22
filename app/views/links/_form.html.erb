@@ -14,6 +14,7 @@
   <form class="form-horizontal">
 
     <div class="form-group">
+      <h2>Tags</h2>
       <%= f.text_field :tag_list, value: @link.tag_list.join(', '), class: "form-control input-lg", data: { input: 'select2', options: { tags: tag_collection } } %>
     </div>
 
