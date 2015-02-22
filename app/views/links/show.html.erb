@@ -43,7 +43,7 @@
   <div class="col-sm-6">
     <div class="tags">
       <h2>Tags</h2>
-      <%= @link.tags.map(&:name) %>
+      <%= @link.tags.map(&:name).join(', ') %>
     </div>
 
     <div class="comments">
