@@ -6,7 +6,7 @@
           <%= form_tag links_path, method: 'GET', data: { form: 'search' } do |f| %>
             <%=  hidden_field_tag :tags, params[:tags], data: { input: 'search' } %>
           <% end %>
-          <%= select_tag :tags, options_from_collection_for_select(ActsAsTaggableOn::Tag.all, :name, :name, params[:tags].split(',')), multiple: true, data: { input: 'chosen', select: 'search' } %>
+          <%= select_tag :tags, options_from_collection_for_select(ActsAsTaggableOn::Tag.all, :name, :name, params[:tags].try(:split, ',')), multiple: true, data: { input: 'chosen', select: 'search' } %>
         </div>
 
         <% if user_signed_in? %>
