@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :links do
     post :like, on: :member
+    resources :comments, only: [:create]
   end
   resources :users, only: [:show]
 

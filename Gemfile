@@ -43,6 +43,8 @@ gem 'select2-rails'
 
 gem 'validate_url'
 
+gem 'awesome_nested_set'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

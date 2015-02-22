@@ -56,6 +56,8 @@
 
     <div class="comments">
       <h2>Comments</h2>
+      <%= render 'comments/form', comment: Comment.new(link: @link) %>
+      <%= render @link.comments.roots %>
     </div>
   </div>
 
