@@ -42,7 +42,7 @@
       <h3 class="panel-title">
         <%= link_to link_path(link) do %>
           <div class="pull-left">Comments</div>
-          <div class="pull-right">0</div>
+          <div class="pull-right"><%= link.comments_count %></div>
           <div class="clearfix"></div>
         <% end %>
       </h3>
