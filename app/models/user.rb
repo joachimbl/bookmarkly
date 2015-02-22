@@ -9,12 +9,18 @@ class User < ActiveRecord::Base
 
   # Associations
   has_and_belongs_to_many :links, uniq: true
+  has_many :likes, inverse_of: :user
 
   # Attributes
   attr_accessor :login
 
   # Validations
   validates :username, presence: true, uniqueness: { case_sensitive: false }
+
+  # Instance Methods
+  def like(link)
+    likes.create(link: link)
+  end
 
   # Class Methods
   def self.find_for_database_authentication(warden_conditions)

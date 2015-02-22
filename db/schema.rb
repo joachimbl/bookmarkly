@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150222112852) do
+ActiveRecord::Schema.define(version: 20150222141734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "link_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "likes", ["link_id", "user_id"], name: "index_likes_on_link_id_and_user_id", unique: true, using: :btree
 
   create_table "links", force: :cascade do |t|
     t.string   "title"
@@ -26,8 +35,9 @@ ActiveRecord::Schema.define(version: 20150222112852) do
     t.text     "html"
     t.string   "thumbnail_url"
     t.integer  "media_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "likes_count",   default: 0, null: false
   end
 
   create_table "links_users", id: false, force: :cascade do |t|
@@ -35,8 +45,7 @@ ActiveRecord::Schema.define(version: 20150222112852) do
     t.integer "user_id", null: false
   end
 
-  add_index "links_users", ["link_id"], name: "index_links_users_on_link_id", using: :btree
-  add_index "links_users", ["user_id"], name: "index_links_users_on_user_id", using: :btree
+  add_index "links_users", ["link_id", "user_id"], name: "index_links_users_on_link_id_and_user_id", unique: true, using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -82,4 +91,6 @@ ActiveRecord::Schema.define(version: 20150222112852) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "likes", "links"
+  add_foreign_key "likes", "users"
 end

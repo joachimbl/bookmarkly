@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_link, only: [:show, :edit, :update, :destroy, :like]
 
   # GET /links
   def index
@@ -55,6 +55,14 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
     redirect_to root_url, notice: 'Link was successfully destroyed.'
+  end
+
+  def like
+    current_user.like(@link)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def external_link

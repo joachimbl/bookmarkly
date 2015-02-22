@@ -1,9 +1,14 @@
-<div class="box col-xs-12 col-sm-4">
+<%= content_tag :div, class: "box col-xs-12 col-sm-4", id: dom_id(link) do %>
   <div class="panel panel-default card">
     <div class="panel-heading">
       <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
       <h3 class="panel-title gt-reset text-inline">
         <%= link_to link.provider_name, link.provider_url %>
+        <% if link.liked_by?(current_user) %>
+          <span class="like-count text-muted"><%= link.likes_count %></span>
+        <% else %>
+          <span class="like-count"><%= link_to link.likes_count, like_link_path(link), remote: true, method: 'POST' %></span>
+        <% end %>
       </h3>
 
     </div>
@@ -44,4 +49,4 @@
     </div>
 
   </div>
-</div>
+<% end %>

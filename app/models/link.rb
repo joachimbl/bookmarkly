@@ -4,6 +4,7 @@ class Link < ActiveRecord::Base
 
   # Associations
   has_and_belongs_to_many :users, uniq: true
+  has_many :likes, inverse_of: :link
 
   # Validations
   validates :url, presence: true, uniqueness: true, url: true
@@ -12,7 +13,13 @@ class Link < ActiveRecord::Base
   # Callbacks
   before_create :fetch_from_embedly
 
+  # Attributes
   enum media_type: [:other, :photo, :video, :rich]
+
+  # Instance Methods
+  def liked_by?(user)
+    likes.exists?(user_id: user)
+  end
 
   def fetch_from_embedly
     response = embedly_api.extract(url: url).first
