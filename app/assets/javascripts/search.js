@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('page:change', function() {
   var $searchForm = $('[data-form="search"]'),
       $searchField = $('[data-input="search"]');
 
