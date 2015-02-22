@@ -25,3 +25,4 @@
 //= require masonry/jquery.loremimages.min
 //= require chosen-jquery
 //= requrie chosen
+//= require search
