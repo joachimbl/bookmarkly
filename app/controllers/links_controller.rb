@@ -8,7 +8,6 @@ class LinksController < ApplicationController
 
   # GET /links/1
   def show
-    @link = Link.find(params[:id])
   end
 
   # GET /links/new
