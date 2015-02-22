@@ -1,38 +1,38 @@
-<div class="row cards">
+<div class="row">
 
-  <div class="col-sm-6">
+  <div class="col-sm-6 cards">
 
-    <%= link_to url_with_protocol(@link.url), :target => '_blank', :rel => 'nofollow' do %>
-      <div class="panel panel-default card">
-        <div class="panel-heading">
-          <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
-          <h2 class="panel-title gt-reset text-inline pull-left">
-            <%= @link.provider_name %>
-          </h2>
+    <div class="panel panel-default card">
+      <div class="panel-heading">
+        <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+        <h2 class="panel-title gt-reset text-inline pull-left">
+          <%= @link.provider_name %>
+        </h2>
 
-          <% if @link.liked_by?(current_user) %>
-            <div class="vote voted">
-              <span class="badge"><%= icon 'caret-up' %>
+        <% if @link.liked_by?(current_user) %>
+          <div class="vote voted">
+            <span class="badge"><%= icon 'caret-up' %>
+              <span class="like-count text-inline">
+                <%= @link.likes_count %>
+              </span>
+            </span>
+          </div>
+        <% else %>
+          <div class="vote">
+            <span class="badge">
+              <%= link_to like_link_path(@link), remote: true, method: 'POST' do %>
+                <%= icon 'caret-up' %>
                 <span class="like-count text-inline">
                   <%= @link.likes_count %>
                 </span>
-              </span>
-            </div>
-          <% else %>
-            <div class="vote">
-              <span class="badge">
-                <%= link_to like_link_path(@link), remote: true, method: 'POST' do %>
-                  <%= icon 'caret-up' %>
-                  <span class="like-count text-inline">
-                    <%= @link.likes_count %>
-                  </span>
-                <% end %>
-              </span>
-            </div>
-          <% end %>
-          <div class="clearfix"></div>
-        </div>
+              <% end %>
+            </span>
+          </div>
+        <% end %>
+        <div class="clearfix"></div>
+      </div>
 
+      <%= link_to url_with_protocol(@link.url), :target => '_blank', :rel => 'nofollow' do %>
         <div class="row">
           <div class="col-xs-5 col-sm-12">
             <% if @link.html.present? == true %>
@@ -53,12 +53,12 @@
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <strong>Shared by:</strong>
     <% @link.users.each do |user| %>
-      <%= link_to user.username, user %>
+      <%= link_to user.username.humanize, user %>
     <% end %>
   </div>
 
@@ -79,6 +79,7 @@
     <div class="comments">
       <h2>Comments</h2>
       <%= render 'comments/form', comment: Comment.new(link: @link) %>
+      <hr>
       <%= render @link.comments.roots %>
     </div>
   </div>

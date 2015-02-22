@@ -1,5 +1,5 @@
 <%= form_for [comment.link, Comment.new], namespace: dom_id(comment) do |f| %>
   <%= f.hidden_field :parent_id, value: comment.id %>
-  <%= f.text_area :body %>
-  <%= f.submit %>
+  <%= f.text_area :body, class: "form-control", rows: "3", placeholder: "Add a comment" %>
+  <%= f.submit "Comment", class: "btn btn-default pull-right gt-top" %>
 <% end %>

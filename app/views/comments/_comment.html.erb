@@ -1,8 +1,12 @@
 <div class="row">
-  <%= content_tag :div, class: (comment.root? ? 'col-xs-12' : 'col-xs-offset-1 col-xs-11') do %>
-    <div><%= comment.body %></div>
-    <%= link_to 'reply', '#', data: { comment: 'reply' } %>
-    <%= comment.user.username %>
+  <%= content_tag :div, class: (comment.root? ? 'col-xs-12 comment comment-parent' : 'col-xs-offset-1 col-xs-11 comment comment-child') do %>
+    <div class="comment-body">
+      <strong class="gt-top"><%= comment.user.username.humanize %></strong>
+      <small><%= l comment.created_at, format: :short %></small>
+      <div><%= comment.body %></div>
+      <%= link_to 'reply', '#', class: 'gt-top  btn-xs', data: { comment: 'reply' } %>
+    </div>
+
     <%= content_tag :div, class: 'hidden', data: { comment: 'form' } do %>
       <%= render 'comments/form', comment: comment %>
     <% end %>

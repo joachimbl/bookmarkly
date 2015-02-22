@@ -135,6 +135,56 @@ a:hover {
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
+.filter {
+  .select2-container .select2-choices, .form-control {
+    box-shadow: none !important;
+    border: 0 !important;
+    background-color: transparent !important;
+  }
+}
+
+.comments {
+  margin-top: 15px;
+}
+
+.comment {
+  .comment-body {
+    padding: 15px 0px;
+
+    .btn-xs {
+      padding-left: 0px;
+      visibility: hidden;
+    }
+
+    &:hover {
+      .btn-xs {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.comment-parent {
+
+}
+
+.comment-child {
+  border-top: 1px solid #ccc;
+}
+
+.btn-facebook {
+  @extend .btn-default;
+
+  color: #fff;
+  background: #3a5795;
+  border-color: #133783;
+
+  &:hover {
+    color: #fff;
+    background: #133783;
+  }
+}
+
 @media (min-width: 992px) {
   .box {
     width: 24.9%;
