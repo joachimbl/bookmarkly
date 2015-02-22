@@ -23,6 +23,6 @@
 //= require masonry/modernizr-transitions
 //= require masonry/box-maker
 //= require masonry/jquery.loremimages.min
-//= require chosen-jquery
-//= requrie chosen
+//= require select2
+//= require select2_plugin
 //= require search

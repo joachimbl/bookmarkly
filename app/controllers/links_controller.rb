@@ -44,7 +44,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
     if @link.update(link_params)
-      redirect_to root_url, notice: 'Link was successfully updated.'
+      redirect_to edit_link_path(@link), notice: 'Link was successfully updated.'
     else
       render :edit
     end
@@ -83,7 +83,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:url, tag_ids: [])
+    params.require(:link).permit(:url, :tag_list)
   end
 
   def link_create_params
