@@ -1,5 +1,5 @@
 <%= form_for [comment.link, Comment.new], namespace: dom_id(comment) do |f| %>
   <%= f.hidden_field :parent_id, value: comment.id %>
-  <%= f.text_field :body %>
+  <%= f.text_area :body %>
   <%= f.submit %>
 <% end %>
