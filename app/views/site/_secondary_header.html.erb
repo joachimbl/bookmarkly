@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="pull-left">
-          <%= form_tag links_path, method: 'GET', data: { form: 'search' }, class: 'form-group' do |f| %>
+          <%= form_tag links_path, method: 'GET', data: { form: 'search' } do |f| %>
             <%= text_field_tag :tags, params[:tags], class: 'full-width', data: { placeholder: 'Filter', input: 'select2', select: 'search', options: { multiple: true, width: '300', data: tag_collection } } %>
           <% end %>
         </div>
