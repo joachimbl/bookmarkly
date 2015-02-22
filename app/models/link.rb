@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
   acts_as_taggable
 
   # Associations
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, uniq: true
 
   # Validations
   validates :url, presence: true, uniqueness: true
@@ -33,7 +33,11 @@ class Link < ActiveRecord::Base
 
   def merge_with_existing
     existing_link = self.class.where(url: url).first
-    existing_link.users << users
+    users.each do |user|
+      existing_link.users << user unless existing_link.users.include?(user)
+    end
+
+    return existing_link
   end
 
   private

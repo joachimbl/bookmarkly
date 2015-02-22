@@ -30,8 +30,8 @@ class LinksController < ApplicationController
       else
         render :new
       end
-    elsif @link.merge_with_existing
-      redirect_to link_path(@link), notice: 'Link already exists.', class: 'well'
+    elsif existing_link = @link.merge_with_existing
+      redirect_to link_path(existing_link), notice: 'Link already exists.', class: 'well'
     else
       render :new
     end

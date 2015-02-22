@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Associations
-  has_and_belongs_to_many :links
+  has_and_belongs_to_many :links, uniq: true
 end
