@@ -35,7 +35,8 @@ ActiveRecord::Schema.define(version: 20150222112852) do
     t.integer "user_id", null: false
   end
 
-  add_index "links_users", ["link_id", "user_id"], name: "index_links_users_on_link_id_and_user_id", unique: true, using: :btree
+  add_index "links_users", ["link_id"], name: "index_links_users_on_link_id", using: :btree
+  add_index "links_users", ["user_id"], name: "index_links_users_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

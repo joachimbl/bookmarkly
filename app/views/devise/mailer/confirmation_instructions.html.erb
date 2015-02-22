@@ -33,7 +33,7 @@
                   <tbody>
                     <tr>
                       <td valign="top" width="100%">
-                        <h2 STYLE="font-family: 'Tahoma'; font-weight: 400;">Welcome <%= @email %>!</h2>
+                        <h2 STYLE="font-family: 'Tahoma'; font-weight: 400;">Welcome <%= @username %>!</h2>
                         <p>You can confirm your account email through the link below:</p>
 
                         <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
