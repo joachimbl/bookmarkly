@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
 
   # Associations
   has_and_belongs_to_many :links, uniq: true
-  has_many :likes, inverse_of: :user
-  has_many :comments, inverse_of: :user
+  has_many :likes, inverse_of: :user, dependent: :destroy
+  has_many :comments, inverse_of: :user, dependent: :destroy
 
   # Attributes
   attr_accessor :login

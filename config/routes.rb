@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     post :like, on: :member
     resources :comments, only: [:create]
   end
+
   resources :users, only: [:show]
 
   root to: 'links#index'

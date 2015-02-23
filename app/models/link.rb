@@ -4,8 +4,8 @@ class Link < ActiveRecord::Base
 
   # Associations
   has_and_belongs_to_many :users, uniq: true
-  has_many :likes, inverse_of: :link
-  has_many :comments, inverse_of: :link
+  has_many :likes, inverse_of: :link, dependent: :destroy
+  has_many :comments, inverse_of: :link, dependent: :destroy
 
   # Validations
   validates :url, presence: true, uniqueness: true, url: true

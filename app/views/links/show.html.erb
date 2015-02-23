@@ -1,12 +1,12 @@
 <div class="row">
 
-  <div class="col-sm-6 cards">
+  <%= content_tag :div, class: "col-sm-6 cards", id: dom_id(@link) do %>
 
     <div class="panel panel-default card">
       <div class="panel-heading">
         <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
         <h2 class="panel-title gt-reset text-inline pull-left">
-          <%= @link.provider_name %>
+          <%= link_to @link.provider_name, @link.provider_url %>
         </h2>
 
         <% if @link.liked_by?(current_user) %>
@@ -60,7 +60,8 @@
     <% @link.users.each do |user| %>
       <%= link_to user.username.humanize, user %>
     <% end %>
-  </div>
+
+  <% end %>
 
   <div class="col-sm-6">
     <div class="tags">
@@ -78,10 +79,13 @@
 
     <div class="comments">
       <h2>Comments</h2>
-      <%= render 'comments/form', comment: Comment.new(link: @link) %>
-      <hr>
+      <% if user_signed_in? %>
+        <%= render 'comments/form', comment: Comment.new(link: @link) %>
+        <hr>
+      <% end %>
       <%= render @link.comments.roots %>
     </div>
+
   </div>
 
 </div>
