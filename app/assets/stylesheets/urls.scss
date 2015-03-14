@@ -40,9 +40,11 @@ a:hover {
     color: #222;
   }
 
-  &:hover {
-    .lead-img, .title, .description {
-      opacity: 0.6;
+  .row {
+    &:hover {
+      .lead-img, .title, .description {
+        opacity: 0.6;
+      }
     }
   }
 
@@ -192,10 +194,12 @@ a:hover {
   }
 }
 
-.select2-search-field {
+.select2-container {
   &:before {
     @extend .fa;
+    @extend .pull-left;
 
+    margin-top: 8px;
     content: "\f002";
   }
 }
