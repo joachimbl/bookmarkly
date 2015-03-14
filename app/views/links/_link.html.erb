@@ -36,7 +36,7 @@
             <%= raw link.html %>
           </div>
         <% elsif link.thumbnail_url.present? %>
-          <%= link_to url_with_protocol(link.url), :target => '_blank', :rel => 'nofollow', onclick: ("trackOutboundLink:('#{link.url}'); return false;") do %>
+          <%= link_to url_with_protocol(link.url), :target => '_blank', :rel => 'nofollow', onclick: ("trackOutboundLink:('#{link.url}');") do %>
 
             <%= image_tag link.thumbnail_url, class: "img-responsive center-block lead-img" %>
           <% end%>
@@ -45,7 +45,7 @@
       </div>
       <div class="col-xs-7 col-sm-12">
         <div class="panel-body">
-          <%= link_to url_with_protocol(link.url), :target => '_blank', :rel => 'nofollow', onclick: ("trackOutboundLink:('#{link.url}'); return false;") do %>
+          <%= link_to url_with_protocol(link.url), :target => '_blank', :rel => 'nofollow' do %>
             <h2 class="title gt-reset"><%= link.title %></h2>
             <p class="hidden-xs description gt-top">
               <%= link.description.to_s.truncate(140) %>
