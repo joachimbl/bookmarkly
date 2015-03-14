@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     likes.create(link: link)
   end
 
+  def to_param
+    username
+  end
+
   # Class Methods
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

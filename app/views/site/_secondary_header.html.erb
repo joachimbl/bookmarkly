@@ -4,7 +4,7 @@
       <div class="col-sm-6">
         <div class="filter">
           <%= form_tag links_path, method: 'GET', data: { form: 'search' } do |f| %>
-            <%= text_field_tag :tags, params[:tags], class: 'form-control', data: { placeholder: 'Search filter', input: 'select2', select: 'search', options: { multiple: true, data: tag_collection } } %>
+            <%= text_field_tag :tags, params[:tags], class: 'form-control tag-search', data: { placeholder: 'Search filter', input: 'select2', select: 'search', options: { multiple: true, data: tag_collection } } %>
           <% end %>
         </div>
       </div>

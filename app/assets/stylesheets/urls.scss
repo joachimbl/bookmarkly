@@ -192,6 +192,22 @@ a:hover {
   }
 }
 
+.select2-search-field {
+  &:before {
+    @extend .fa;
+
+    content: "\f002";
+  }
+}
+
+.info-field-trigger {
+  top: 15px;
+
+  & button {
+    color: #eee;
+  }
+}
+
 @media (min-width: 992px) {
   .box {
     width: 24.9%;

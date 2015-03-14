@@ -1,5 +1,5 @@
 <div class="container-fluid header">
-  <div class="container">
+  <div class="container relative">
     <div class="row">
       <div class="col-md-3">
         <%= link_to root_url do %>
@@ -24,9 +24,11 @@
         <% else %>
 
           <div class="pull-right gt-top">
-            <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-primary' %>
 
-            <%= link_to 'Sign up now', new_user_registration_path, class: 'btn btn-default gt-left' %>
+
+            <%= link_to 'Sign up now', new_user_registration_path, class: 'btn btn-default gt-right' %>
+
+            <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-primary' %>
           </div>
 
         <% end %>
@@ -34,5 +36,20 @@
         <%#= render "urls/form" action: 'new' %>
       </div>
     </div>
+
+    <div class="row info-field-trigger text-center absolute gt-vrt-lg ">
+      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#info-field" aria-expanded="false" aria-controls="collapseExample">
+        <%#= icon 'play-circle-o', '', class: 'fa-3x' %>
+      </button>
+    </div>
+
+    <div class="row collapse" id="info-field">
+      <div class="col-xs-12 text-center">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/09R8_2nJtjg" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
