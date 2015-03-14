@@ -4,6 +4,9 @@
   <title>browzery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Organize and get easy access to your favorite links. Upvote, comment and explore other peoples favorite links too.">
+
   <%#= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-beta.3/css/select2.min.css', media: 'all' %>
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -21,7 +24,20 @@
     ga('create', 'UA-59787833-1', 'auto');
     ga('send', 'pageview');
 
+  /**
+  * Function that tracks a click on an outbound link in Google Analytics.
+  * This function takes a valid URL string as an argument, and uses that URL string
+  * as the event label.
+  */
+  var trackOutboundLink = function(url) {
+     ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+       function () {
+       document.location = url;
+       }
+     });
+  }
   </script>
+
 </head>
 <body>
   <%= render 'site/header' %>
@@ -45,5 +61,6 @@
 
   </div>
 <small class="text-center col-xs-12"><%= mail_to "hello@browzery.com", "Contact Browzery", class: "text-muted" %></small>
+
 </body>
 </html>
