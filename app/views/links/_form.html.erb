@@ -12,8 +12,13 @@
   <% end %>
 
   <form class="form-horizontal">
+    <div class="form-group" data-toggle="buttons">
+      <label class="btn btn-private pull-right">
+        <%= check_box_tag :private_link %> This link is
+      </label>
+    </div>
 
-    <div class="form-group">
+    <div class="form-group clearfix">
       <h2>Add tags</h2>
       <%= f.text_field :tag_list, value: @link.tag_list.join(', '), class: "form-control input-lg", data: { input: 'select2', options: { tags: tag_collection } } %>
     </div>
@@ -21,6 +26,7 @@
     <div class="form-group">
       <%= f.submit "Save tags", class: "btn btn-success btn-lg pull-right" %>
     </div>
+
   </form>
 
 <% end %>

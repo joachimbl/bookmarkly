@@ -149,6 +149,16 @@ a:hover {
     border: 0 !important;
     background-color: transparent !important;
   }
+
+  .select2-container {
+    &:before {
+      @extend .fa;
+      @extend .pull-left;
+
+      margin-top: 8px;
+      content: "\f002";
+    }
+  }
 }
 
 .comments {
@@ -194,21 +204,39 @@ a:hover {
   }
 }
 
-.select2-container {
-  &:before {
-    @extend .fa;
-    @extend .pull-left;
-
-    margin-top: 8px;
-    content: "\f002";
-  }
-}
-
 .info-field-trigger {
   top: 15px;
 
   & button {
     color: #eee;
+  }
+}
+
+.btn-private {
+
+  &:after {
+    content: "Public";
+  }
+
+  &:before {
+    @extend .fa;
+
+    content: "\f0ac";
+  }
+
+  &.active {
+    background: $brand-danger;
+    color: #fff;
+
+    &:after {
+      content: "Private";
+    }
+
+    &:before {
+      @extend .fa;
+
+      content: "\f023";
+    }
   }
 }
 
