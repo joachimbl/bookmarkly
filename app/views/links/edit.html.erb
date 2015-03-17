@@ -35,9 +35,7 @@
     <% end %>
 
     <strong>Shared by:</strong>
-    <% @link.users.each do |user| %>
-      <%= link_to user.username, user %>
-    <% end %>
+    <%= raw @link.users.map { |user| link_to user.username.humanize, user }.join(', ') %>
   </div>
 
   <div class="col-sm-6">
