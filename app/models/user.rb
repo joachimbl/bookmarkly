@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   # Associations
-  has_and_belongs_to_many :links, uniq: true
+  has_many :bookmarks
+  has_many :links, through: :bookmarks
   has_many :likes, inverse_of: :user, dependent: :destroy
   has_many :comments, inverse_of: :user, dependent: :destroy
 

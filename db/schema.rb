@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315001756) do
+ActiveRecord::Schema.define(version: 20150317161310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "link_id",                    null: false
+    t.integer  "user_id",                    null: false
+    t.boolean  "private",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "bookmarks", ["link_id", "user_id"], name: "index_bookmarks_on_link_id_and_user_id", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "link_id"
@@ -49,19 +59,11 @@ ActiveRecord::Schema.define(version: 20150315001756) do
     t.text     "html"
     t.string   "thumbnail_url"
     t.integer  "media_type"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "likes_count",    default: 0,     null: false
-    t.integer  "comments_count", default: 0,     null: false
-    t.boolean  "private",        default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "likes_count",    default: 0, null: false
+    t.integer  "comments_count", default: 0, null: false
   end
-
-  create_table "links_users", id: false, force: :cascade do |t|
-    t.integer "link_id", null: false
-    t.integer "user_id", null: false
-  end
-
-  add_index "links_users", ["link_id", "user_id"], name: "index_links_users_on_link_id_and_user_id", unique: true, using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

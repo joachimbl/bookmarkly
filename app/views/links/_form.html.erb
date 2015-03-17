@@ -12,8 +12,10 @@
   <% end %>
 
   <div class="form-group" data-toggle="buttons">
-    <%= f.label :private, class: "btn btn-private pull-right #{'active' if @link.private?}"  do %>
-      <%= f.check_box :private %> This link is
+    <%= f.fields_for :bookmarks, @link.bookmark_for(current_user) do |bookmark_form| %>
+      <%= bookmark_form.label :private, class: "btn btn-private pull-right #{'active' if bookmark_form.object.private?}"  do %>
+        <%= bookmark_form.check_box :private %> This link is
+      <% end %>
     <% end %>
   </div>
 

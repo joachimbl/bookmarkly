@@ -3,9 +3,14 @@ class Link < ActiveRecord::Base
   acts_as_taggable
 
   # Associations
-  has_and_belongs_to_many :users, uniq: true
+  has_many :bookmarks
+  has_many :users, -> { includes(:bookmarks).where(bookmarks: { private: false }) }, through: :bookmarks
   has_many :likes, inverse_of: :link, dependent: :destroy
   has_many :comments, inverse_of: :link, dependent: :destroy
+
+  # Attributes
+  enum media_type: [:other, :photo, :video, :rich]
+  accepts_nested_attributes_for :bookmarks, update_only: true, allow_destroy: false
 
   # Validations
   validates :url, presence: true, uniqueness: true, url: true
@@ -14,12 +19,13 @@ class Link < ActiveRecord::Base
   # Callbacks
   before_create :fetch_from_embedly
 
-  # Attributes
-  enum media_type: [:other, :photo, :video, :rich]
-
   # Instance Methods
   def liked_by?(user)
     likes.exists?(user_id: user)
+  end
+
+  def bookmark_for(user)
+    bookmarks.where(user_id: user).first
   end
 
   def fetch_from_embedly
