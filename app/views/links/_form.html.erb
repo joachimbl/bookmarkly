@@ -1,4 +1,4 @@
-<%= form_for(@link) do |f| %>
+<%= form_for(@link, class: 'form-horizontal') do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@link.errors.count, "error") %> prohibited this url from being saved:</h2>
@@ -11,22 +11,18 @@
     </div>
   <% end %>
 
-  <form class="form-horizontal">
-    <div class="form-group" data-toggle="buttons">
-      <label class="btn btn-private pull-right">
-        <%= check_box_tag :private_link %> This link is
-      </label>
-    </div>
+  <div class="form-group" data-toggle="buttons">
+    <%= f.label :private, class: "btn btn-private pull-right #{'active' if @link.private?}"  do %>
+      <%= f.check_box :private %> This link is
+    <% end %>
+  </div>
 
-    <div class="form-group clearfix">
-      <h2>Add tags</h2>
-      <%= f.text_field :tag_list, value: @link.tag_list.join(', '), class: "form-control input-lg", data: { input: 'select2', options: { tags: tag_collection } } %>
-    </div>
+  <div class="form-group clearfix">
+    <h2>Add tags</h2>
+    <%= f.text_field :tag_list, value: @link.tag_list.join(', '), class: "form-control input-lg", data: { input: 'select2', options: { tags: tag_collection } } %>
+  </div>
 
-    <div class="form-group">
-      <%= f.submit "Save tags", class: "btn btn-success btn-lg pull-right" %>
-    </div>
-
-  </form>
-
+  <div class="form-group">
+    <%= f.submit "Save tags", class: "btn btn-success btn-lg pull-right" %>
+  </div>
 <% end %>

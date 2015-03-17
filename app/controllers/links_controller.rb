@@ -91,7 +91,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:url, :tag_list, :private_link)
+    params.require(:link).permit(:url, :tag_list, :private)
   end
 
   def link_create_params
