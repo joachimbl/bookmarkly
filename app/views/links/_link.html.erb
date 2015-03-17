@@ -6,26 +6,9 @@
         <%= link_to link.provider_name, link_path(link) %>
       </h3>
 
-      <% if link.liked_by?(current_user) %>
-        <div class="vote voted">
-          <span class="badge"><%= icon 'caret-up' %>
-            <span class="like-count text-inline">
-              <%= link.likes_count %>
-            </span>
-          </span>
-        </div>
-      <% else %>
-        <div class="vote">
-          <span class="badge">
-            <%= link_to like_link_path(link), remote: true, method: 'POST' do %>
-              <%= icon 'caret-up' %>
-              <span class="like-count text-inline">
-                <%= link.likes_count %>
-              </span>
-            <% end %>
-          </span>
-        </div>
-      <% end %>
+      <div class="votes">
+        <%= render 'likes', link: link, count: link.likes_count %>
+      </div>
       <div class="clearfix"></div>
     </div>
 
