@@ -7,7 +7,7 @@
       </h3>
 
       <div class="votes">
-        <%= render 'likes', link: link, count: link.likes_count %>
+        <%= render 'likes', link: link, count: link.likes_count, liked: link.liked_by?(current_user) %>
       </div>
       <div class="clearfix"></div>
     </div>
