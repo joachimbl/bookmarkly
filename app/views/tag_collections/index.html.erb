@@ -1,5 +1,5 @@
 <ul>
   <% @tag_collections.each do |tag_collection| %>
-    <li><%= link_to tag_collection.tags.map(&:name).join(', '), links_path(tags: tag_collection.tags.map(&:name).join(',')) %></li>
+    <li><%= link_to tag_collection.tag_list_string, links_path(tags: tag_collection.tag_list_string) %></li>
   <% end %>
 </ul>

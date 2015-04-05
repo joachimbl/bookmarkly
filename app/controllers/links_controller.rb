@@ -1,13 +1,12 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy, :like]
+  before_action :set_user, only: [:index]
 
   # GET /links
   def index
-    if params[:tags].present?
-      @links = Link.tagged_with(params[:tags]).order(created_at: :desc)
-    else
-      @links = Link.order(created_at: :desc)
-    end
+    @links = Link.order(created_at: :desc)
+    @links = @links.tagged_with(params[:tags]) if params[:tags].present?
+    @links = @links.for_user(@user) if @user
   end
 
   # GET /links/1
@@ -87,6 +86,10 @@ private
   # Use callbacks to share common setup or constraints between actions.
   def set_link
     @link = Link.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find_by_username(params[:user_id]) if params[:user_id]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

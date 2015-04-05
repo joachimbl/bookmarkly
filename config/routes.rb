@@ -5,8 +5,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :tag_collections, only: [:create]
+
   resources :users, only: [:show] do
-    resources :tag_collections, only: [:index, :show]
+    resources :links, only: [:index]
+    resources :tag_collections, only: [:index]
   end
 
   root to: 'links#index'

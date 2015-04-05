@@ -19,6 +19,9 @@ class Link < ActiveRecord::Base
   # Callbacks
   before_create :fetch_from_embedly
 
+  # Scopes
+  scope :for_user, ->(user) { joins(:bookmarks).where(bookmarks: { user_id: user }) }
+
   # Instance Methods
   def liked_by?(user)
     likes.exists?(user_id: user)
