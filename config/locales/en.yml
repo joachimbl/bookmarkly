@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  site:
+    secondary_header:
+      follow_tags:
+        one: Follow tag
+        other:  Follow tag collection
