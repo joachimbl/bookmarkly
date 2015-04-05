@@ -1,3 +1,4 @@
+<h1>@<%= @user.username %> <small>Tag collections</small></h1>
 <ul>
   <% @tag_collections.each do |tag_collection| %>
     <li><%= link_to tag_collection.tag_list_string, links_path(tags: tag_collection.tag_list_string) %></li>

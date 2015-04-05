@@ -1,5 +1,5 @@
 <% if @scoped_user %>
-  <h1>@<%= @scoped_user.username %> <small>All links</small></h1>
+  <h1>@<%= @scoped_user.username %> <small><%= params[:tags].present? ? params[:tags] : 'All links' %></small></h1>
 <% end %>
 
 <div class="row cards">
