@@ -28,6 +28,10 @@ class Link < ActiveRecord::Base
     likes.exists?(user_id: user)
   end
 
+  def owner?(user)
+    bookmarks.exists?(user_id: user)
+  end
+
   def bookmark_for(user)
     bookmarks.where(user_id: user).first
   end

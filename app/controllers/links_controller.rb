@@ -4,28 +4,32 @@ class LinksController < ApplicationController
 
   # GET /links
   def index
-    @links = Link.order(created_at: :desc).visible_for(current_user)
+    @links = policy_scope(Link).order(created_at: :desc)
     @links = @links.tagged_with(params[:tags]) if params[:tags].present?
-    @links = @links.for_user(@user) if @user
+    @links = @links.for_user(@scoped_user) if @scoped_user
   end
 
   # GET /links/1
   def show
+    authorize @link
   end
 
   # GET /links/new
   def new
     @link = Link.new(url: params[:url])
+    authorize @link
     @link.fetch_from_embedly
   end
 
   # GET /links/1/edit
   def edit
+    authorize @link
   end
 
   # POST /links
   def create
     @link = Link.new(link_create_params)
+    authorize @link
 
     if @link.unique?
       if @link.save
@@ -43,6 +47,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+    authorize @link
     if @link.update(link_params)
       redirect_to link_path(@link), notice: 'Link was successfully updated.'
     else
@@ -53,6 +58,7 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+    authorize @link
     @link.destroy
     redirect_to root_url, notice: 'Link was successfully destroyed.'
   end
@@ -90,7 +96,7 @@ private
   end
 
   def set_user
-    @user = User.find_by_username(params[:user_id]) if params[:user_id]
+    @scoped_user = User.find_by_username(params[:user_id]) if params[:user_id]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

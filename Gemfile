@@ -48,6 +48,8 @@ gem 'awesome_nested_set'
 
 gem 'omniauth-facebook'
 
+gem 'pundit'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -62,6 +64,8 @@ group :development, :test do
   gem 'spring'
 
   gem "better_errors"
+
+  gem "binding_of_caller"
 
   # Catch and show emails locally
   gem 'mailcatcher'

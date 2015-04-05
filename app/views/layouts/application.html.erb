@@ -33,6 +33,10 @@
 
     <div class="row">
       <div class="col-xs-12">
+        <% if alert %>
+          <p class="well text-danger"><%= alert %></p>
+        <% end %>
+
         <% if notice %>
           <p class="well text-success"><%= notice %></p>
         <% end %>
