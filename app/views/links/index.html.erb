@@ -1,1 +1,10 @@
-<%= render 'collection', links: @links %>
+<% if @scoped_user %>
+  <h1>@<%= @scoped_user.username %> <small>All links</small></h1>
+<% end %>
+
+<div class="row cards">
+  <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix ">
+    <%= render @links %>
+  </div>
+</div>
+
