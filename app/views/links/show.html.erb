@@ -45,7 +45,12 @@
           </div>
           <div class="col-xs-7 col-sm-12">
             <div class="panel-body">
-              <h1 class="title gt-reset"><%= @link.title %></h1>
+              <h1 class="title gt-reset">
+                <%= @link.title %>
+                <% if @link.bookmark_for(current_user).private? %>
+                  <span class="label label-danger">Private</span>
+                <% end %>
+              </h1>
               <p class="hidden-xs description gt-top">
                 <%= @link.description.to_s.truncate(140) %>
               </p>
