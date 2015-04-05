@@ -3,7 +3,7 @@ class LinksController < ApplicationController
 
   # GET /links
   def index
-    if params[:tags]
+    if params[:tags].present?
       @links = Link.tagged_with(params[:tags]).order(created_at: :desc)
     else
       @links = Link.order(created_at: :desc)
