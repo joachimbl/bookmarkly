@@ -9,7 +9,6 @@
 
 .secondary-header {
   background: $brand-darken;
-  padding: 15px;
 }
 
 a:hover {
@@ -144,6 +143,9 @@ a:hover {
 .clearfix { zoom: 1; }
 
 .filter {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
   .select2-container .select2-choices, .form-control {
     box-shadow: none !important;
     border: 0 !important;
@@ -182,8 +184,18 @@ a:hover {
   }
 }
 
-.comment-parent {
+.user-nav {
+  .btn {
+    padding: 21px;
+    border-radius: 0px;
+    border-color: #ecf0f1;
+    background: #f5f5f5;
 
+    span {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
 }
 
 .comment-child {
