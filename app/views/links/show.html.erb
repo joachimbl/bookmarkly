@@ -57,7 +57,7 @@
     </div>
 
     <strong>Shared by:</strong>
-    <%= raw @link.users.map { |user| link_to user.username.humanize, user }.join(', ') %>
+    <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
   <% end %>
 
   <div class="col-sm-6">

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :tag_collections, only: [:create]
 
-  resources :users, only: [:show] do
+  resources :users, only: [] do
     resources :links, only: [:index]
     resources :tag_collections, only: [:index]
   end
