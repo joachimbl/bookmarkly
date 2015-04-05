@@ -6,7 +6,7 @@
       <div class="panel-heading">
         <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
         <h2 class="panel-title gt-reset text-inline pull-left">
-          <%= link_to @link.provider_name, @link.provider_url, :target => '_blank', :rel => 'nofollow', onclick: ("trackOutboundLink:('#{@link.url}');") %>
+          <%= link_to @link.provider_name, @link.provider_url, target: '_blank', rel: 'nofollow', data: { outbound_link: true } %>
         </h2>
 
         <% if @link.liked_by?(current_user) %>
@@ -32,7 +32,7 @@
         <div class="clearfix"></div>
       </div>
 
-      <%= link_to url_with_protocol(@link.url), :target => '_blank', :rel => 'nofollow', onclick: ("trackOutboundLink:('#{@link.url}');") do %>
+      <%= link_to url_with_protocol(@link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
         <div class="row">
           <div class="col-xs-5 col-sm-12">
             <% if @link.html.present? == true %>

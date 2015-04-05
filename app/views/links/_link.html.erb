@@ -19,8 +19,7 @@
             <%= raw link.html %>
           </div>
         <% elsif link.thumbnail_url.present? %>
-          <%= link_to url_with_protocol(link.url), :target => '_blank', :rel => 'nofollow', onclick: ("trackOutboundLink:('#{link.url}');") do %>
-
+          <%= link_to url_with_protocol(link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
             <%= image_tag link.thumbnail_url, class: "img-responsive center-block lead-img" %>
           <% end%>
           <%# TODO: Add container with dominant color if there is no image to the link %>
@@ -28,7 +27,7 @@
       </div>
       <div class="col-xs-7 col-sm-12">
         <div class="panel-body">
-          <%= link_to url_with_protocol(link.url), :target => '_blank', :rel => 'nofollow' do %>
+          <%= link_to url_with_protocol(link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
             <h2 class="title gt-reset"><%= link.title %></h2>
             <p class="hidden-xs description gt-top">
               <%= link.description.to_s.truncate(140) %>
