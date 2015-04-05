@@ -19,9 +19,6 @@ class Link < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true, url: true
   validates :users, presence: true
 
-  # Callbacks
-  before_create :fetch_from_embedly
-
   # Scopes
   scope :for_user, ->(user) { where(bookmarks: { user_id: user }) }
   scope :visible_for, ->(user) { joins(:bookmarks).where('bookmarks.private = \'f\' OR bookmarks.user_id = ?', user.try(:id)).uniq }
@@ -44,6 +41,7 @@ class Link < ActiveRecord::Base
     self.provider_name = response.provider_name
     self.provider_url = response.provider_url
     self.media_type = response.media.type
+    self.tag_list = response.keywords.sort { |keyword| keyword['score'].to_i }.map { |keyword| keyword['name'] }.join(',')
     self.html = response.media.html if %w(video rich).include?(media_type)
     self.thumbnail_url = response.images.first['url'] if response.images.any?
   end

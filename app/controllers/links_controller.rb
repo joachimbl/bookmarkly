@@ -15,7 +15,8 @@ class LinksController < ApplicationController
 
   # GET /links/new
   def new
-    @link = Link.new
+    @link = Link.new(url: params[:url])
+    @link.fetch_from_embedly
   end
 
   # GET /links/1/edit
@@ -94,11 +95,11 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def link_params
-    params.require(:link).permit(:url, :tag_list, bookmarks_attributes: [:id, :private])
+    params.require(:link).permit(:tag_list, bookmarks_attributes: [:id, :private])
   end
 
   def link_create_params
-    link_params.tap do |whitelist|
+    params.require(:link).permit(:tag_list, :url, :title, :description, :favicon_url, :provider_name, :provider_url, :media_type, :html, :thumbnail_url, bookmarks_attributes: [:id, :private]).tap do |whitelist|
       whitelist[:users] = [current_user]
     end
   end

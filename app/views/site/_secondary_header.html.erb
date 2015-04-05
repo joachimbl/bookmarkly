@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="filter">
-          <%= form_tag polymorphic_path([@user, Link]), method: 'GET', data: { form: 'search' } do |f| %>
+          <%= form_tag polymorphic_path([@user, Link]), method: 'GET', enforce_utf8: false, data: { form: 'search' } do |f| %>
             <%= text_field_tag :tags, params[:tags], class: 'form-control tag-search', data: { placeholder: 'Search filter', input: 'select2', select: 'search', options: { multiple: true, data: tag_collection } } %>
           <% end %>
 

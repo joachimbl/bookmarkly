@@ -1,30 +1,97 @@
-<%= form_for(@link, class: 'form-horizontal') do |f| %>
-  <% if @link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this url from being saved:</h2>
+<div class="row cards">
 
-      <ul>
-      <% @link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="col-sm-6">
 
-  <div class="form-group" data-toggle="buttons">
-    <%= f.fields_for :bookmarks, @link.bookmark_for(current_user) do |bookmark_form| %>
-      <%= bookmark_form.label :private, class: "btn btn-private pull-right #{'active' if bookmark_form.object.private?}"  do %>
-        <%= bookmark_form.check_box :private %> This link is
-      <% end %>
+    <%= link_to url_with_protocol(@link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
+      <div class="panel panel-default card">
+        <div class="panel-heading">
+          <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+          <h1 class="panel-title gt-reset text-inline">
+            <%= @link.provider_name %>
+          </h1>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-5 col-sm-12">
+            <% if @link.html.present? == true %>
+              <div class="embed-responsive embed-responsive-4by3">
+                <%= raw @link.html %>
+              </div>
+            <% else %>
+              <%= image_tag @link.thumbnail_url, class: "img-responsive center-block lead-img" %>
+            <% end %>
+          </div>
+          <div class="col-xs-7 col-sm-12">
+            <div class="panel-body">
+              <h2 class="title gt-reset"><%= @link.title %></h2>
+              <p class="hidden-xs description gt-top">
+                <%= @link.description.to_s.truncate(140) %>
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
+
+    <strong>Shared by:</strong>
+    <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
   </div>
 
-  <div class="form-group clearfix">
-    <h2>Add tags</h2>
-    <%= f.text_field :tag_list, value: @link.tag_list.join(', '), class: "form-control input-lg", data: { input: 'select2', options: { tags: tag_collection } } %>
+  <div class="col-sm-6">
+    <div class="tags">
+      <%= form_for(@link, class: 'form-horizontal') do |f| %>
+        <%= f.hidden_field :url %>
+        <%= f.hidden_field :title %>
+        <%= f.hidden_field :description %>
+        <%= f.hidden_field :favicon_url %>
+        <%= f.hidden_field :provider_name %>
+        <%= f.hidden_field :provider_url %>
+        <%= f.hidden_field :media_type %>
+        <%= f.hidden_field :html %>
+        <%= f.hidden_field :thumbnail_url %>
+
+        <% if @link.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@link.errors.count, "error") %> prohibited this url from being saved:</h2>
+
+            <ul>
+            <% @link.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="form-group" data-toggle="buttons">
+          <%= f.fields_for :bookmarks, @link.bookmark_for(current_user) do |bookmark_form| %>
+            <%= bookmark_form.label :private, class: "btn btn-private pull-right #{'active' if bookmark_form.object.private?}"  do %>
+              <%= bookmark_form.check_box :private %> This link is
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="form-group clearfix">
+          <h2>Add tags</h2>
+          <%= f.text_field :tag_list, value: @link.tag_list.join(', '), class: "form-control input-lg", data: { input: 'select2', options: { tags: tag_collection } } %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit class: "btn btn-success btn-lg pull-right" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= f.submit "Save tags", class: "btn btn-success btn-lg pull-right" %>
-  </div>
-<% end %>
+</div>
+
+ <div class="hidden-xs">
+  <% if current_user.email == 'joachim.blicher@gmail.com' %>
+
+    <%= link_to @link, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <%= icon('close', '', class: 'btn btn-lg text-muted pull-right') %>
+    <% end %>
+
+  <% end %>
+</div>
+
