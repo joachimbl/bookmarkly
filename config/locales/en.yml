@@ -24,4 +24,7 @@ en:
     secondary_header:
       follow_tags:
         one: Follow this tag
-        other:  Follow this tag collection
+        other: Follow this tag collection
+      unfollow_tags:
+        one: Unfollow this tag
+        other: Unfollow this tag collection

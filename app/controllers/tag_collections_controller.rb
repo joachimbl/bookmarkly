@@ -13,6 +13,15 @@ class TagCollectionsController < ApplicationController
     redirect_to links_path(tags: @tag_collection.tag_list_string), notice: 'You are now following this collection.', class: 'well'
   end
 
+  def destroy
+    @tag_collection = TagCollection.find(params[:id])
+    tag_list = @tag_collection.tag_list_string
+
+    @tag_collection.destroy
+    redirect_to links_path(tags: tag_list), notice: 'You no longer follow this collection.', class: 'well'
+  end
+
+
 private
 
   def tag_collection_params

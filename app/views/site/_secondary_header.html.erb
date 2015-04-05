@@ -10,9 +10,13 @@
           </div>
           <div class="pull-left">
             <% if params[:tags].present? %>
-              <%= form_for TagCollection.new do |f| %>
-                <%= f.hidden_field :tag_list, value: params[:tags] %>
-                <%= f.submit t('.follow_tags',  count: params[:tags].split(',').count), class: 'btn btn-xs follow-btn' %>
+              <% if @tag_collection.new_record? %>
+                <%= form_for @tag_collection do |f| %>
+                  <%= f.hidden_field :tag_list, value: @tag_collection.tag_list_string %>
+                  <%= f.submit t('.follow_tags',  count: @tag_collection.tag_list.count), class: 'btn btn-xs follow-btn' %>
+                <% end %>
+              <% else %>
+                <%= link_to t('.unfollow_tags',  count: @tag_collection.tag_list.count), @tag_collection, method: :delete, class: 'btn btn-xs follow-btn' %>
               <% end %>
             <% end %>
           </div>
