@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405100609) do
+ActiveRecord::Schema.define(version: 20150405101522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,18 @@ ActiveRecord::Schema.define(version: 20150405100609) do
     t.integer  "likes_count",    default: 0, null: false
     t.integer  "comments_count", default: 0, null: false
   end
+
+  create_table "tag_collections", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tag_collections_users", id: false, force: :cascade do |t|
+    t.integer "tag_collection_id", null: false
+    t.integer "user_id",           null: false
+  end
+
+  add_index "tag_collections_users", ["tag_collection_id", "user_id"], name: "index_tag_collections_users_on_tag_collection_id_and_user_id", unique: true, using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

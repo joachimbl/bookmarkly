@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :links, through: :bookmarks
   has_many :likes, inverse_of: :user, dependent: :destroy
   has_many :comments, inverse_of: :user, dependent: :destroy
+  has_and_belongs_to_many :tag_collections
 
   # Attributes
   attr_accessor :login
