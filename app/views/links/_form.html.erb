@@ -38,6 +38,7 @@
       <strong>Shared by:</strong>
       <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
     <% end %>
+
   </div>
 
   <div class="col-sm-6">
@@ -79,19 +80,20 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit class: "btn btn-success btn-lg pull-right" %>
+          <%= f.submit class: "btn btn-success btn pull-right" %>
         </div>
+
+        <% if policy(@link).remove? %>
+          <small>
+            <%= link_to remove_link_path(@link), method: :post, data: { confirm: 'Are you sure?' }, class: 'btn btn-muted' do %>
+              <%= icon 'close' %>
+              Remove link from my collection
+            <% end %>
+          </small>
+        <% end %>
       <% end %>
+
     </div>
   </div>
 
 </div>
-
- <div class="hidden-xs">
-  <% if policy(@link).remove? %>
-    <%= link_to remove_link_path(@link), method: :post, data: { confirm: 'Are you sure?' } do %>
-      <%= icon('close', '', class: 'btn btn-lg text-muted pull-right') %>
-    <% end %>
-  <% end %>
-</div>
-
