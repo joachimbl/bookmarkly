@@ -10,7 +10,7 @@
           <% if params[:tags].present? %>
             <%= form_for TagCollection.new do |f| %>
               <%= f.hidden_field :tag_list, value: params[:tags] %>
-              <%= f.submit t('.follow_tags', count: params[:tags].split(',').count) %>
+              <%= f.submit t('.follow_tags',  count: params[:tags].split(',').count), class: 'btn btn-primary btn-xs' %>
             <% end %>
           <% end %>
         </div>
