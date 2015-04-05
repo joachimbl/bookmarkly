@@ -36,6 +36,10 @@ class Link < ActiveRecord::Base
     bookmarks.where(user_id: user).first
   end
 
+  def destroy_if_ownerless
+    destroy if users.empty?
+  end
+
   def fetch_from_embedly
     response = embedly_api.extract(url: url).first
 

@@ -34,8 +34,10 @@
       </div>
     <% end %>
 
-    <strong>Shared by:</strong>
-    <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
+    <% if @link.persisted? %>
+      <strong>Shared by:</strong>
+      <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
+    <% end %>
   </div>
 
   <div class="col-sm-6">
@@ -86,12 +88,10 @@
 </div>
 
  <div class="hidden-xs">
-  <% if current_user.email == 'joachim.blicher@gmail.com' %>
-
-    <%= link_to @link, method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <% if policy(@link).remove? %>
+    <%= link_to remove_link_path(@link), method: :post, data: { confirm: 'Are you sure?' } do %>
       <%= icon('close', '', class: 'btn btn-lg text-muted pull-right') %>
     <% end %>
-
   <% end %>
 </div>
 

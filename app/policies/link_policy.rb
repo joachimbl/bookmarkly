@@ -6,10 +6,18 @@ class LinkPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user.present?
   end
 
   def update?
+    owner?
+  end
+
+  def add?
+    create? && !owner?
+  end
+
+  def remove?
     owner?
   end
 

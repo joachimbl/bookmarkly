@@ -58,6 +58,10 @@
 
     <strong>Shared by:</strong>
     <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
+
+    <% if policy(@link).add? %>
+      <%= link_to 'Add link', add_link_path(@link), method: 'POST' %>
+    <% end %>
   <% end %>
 
   <div class="col-sm-6">
@@ -66,7 +70,7 @@
       <%= render @link.tags %>
 
       <div class="hidden-xs">
-        <% if user_signed_in? %>
+        <% if policy(@link).edit? %>
           <%= link_to edit_link_path(@link), class: 'edit-tags', data: { toggle: 'tooltip', placement: 'left', container: 'body' }, title: 'Edit tags' do %>
             <%= icon('pencil', '', class: 'btn text-muted pull-right') %>
           <% end %>

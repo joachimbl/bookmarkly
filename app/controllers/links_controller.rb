@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :set_link, only: [:show, :edit, :update, :destroy, :like]
+  before_action :set_link, only: [:show, :edit, :update, :destroy, :like, :add, :remove]
   before_action :set_user, only: [:index]
 
   # GET /links
@@ -17,8 +17,14 @@ class LinksController < ApplicationController
   # GET /links/new
   def new
     @link = Link.new(url: params[:url])
-    authorize @link
-    @link.fetch_from_embedly
+
+    if @link.unique?
+      authorize @link
+      @link.fetch_from_embedly
+    else
+      existing_link = @link.merge_with_existing
+      redirect_to link_path(existing_link), notice: 'Link already exists.', class: 'well'
+    end
   end
 
   # GET /links/1/edit
@@ -33,12 +39,12 @@ class LinksController < ApplicationController
 
     if @link.unique?
       if @link.save
-        redirect_to edit_link_path(@link), notice: 'Link was successfully created.', class: 'well'
+        redirect_to link_path(@link), notice: 'Link was successfully created.', class: 'well'
       else
         render :new
       end
     elsif existing_link = @link.merge_with_existing
-      redirect_to edit_link_path(existing_link), notice: 'Link already exists.', class: 'well'
+      redirect_to link_path(existing_link), notice: 'Link already exists.', class: 'well'
     else
       render :new
     end
@@ -48,19 +54,28 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1.json
   def update
     authorize @link
-    if @link.update(link_params)
+    if @link.update(link_update_params)
       redirect_to link_path(@link), notice: 'Link was successfully updated.'
     else
       render :edit
     end
   end
 
-  # DELETE /links/1
-  # DELETE /links/1.json
-  def destroy
+  def add
     authorize @link
-    @link.destroy
-    redirect_to root_url, notice: 'Link was successfully destroyed.'
+    @link.users << current_user
+
+    redirect_to @link, notice: 'Link was added to your collections.'
+  end
+
+  def remove
+    authorize @link
+    @link.users.delete(current_user)
+    if @link.destroy_if_ownerless
+      redirect_to links_path, notice: 'Link was deleted.'
+    else
+      redirect_to @link, notice: 'Link was removed from your collections.'
+    end
   end
 
   def like
@@ -100,7 +115,7 @@ private
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
-  def link_params
+  def link_update_params
     params.require(:link).permit(:tag_list, bookmarks_attributes: [:id, :private])
   end
 
