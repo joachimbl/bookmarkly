@@ -24,7 +24,7 @@ class Link < ActiveRecord::Base
 
   # Scopes
   scope :for_user, ->(user) { where(bookmarks: { user_id: user }) }
-  scope :visible_for, ->(user) { joins(:bookmarks).where('bookmarks.private = \'f\' OR bookmarks.user_id = ?', user.id).uniq }
+  scope :visible_for, ->(user) { joins(:bookmarks).where('bookmarks.private = \'f\' OR bookmarks.user_id = ?', user.try(:id)).uniq }
 
   # Instance Methods
   def liked_by?(user)
