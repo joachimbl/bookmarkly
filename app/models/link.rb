@@ -2,6 +2,9 @@ class Link < ActiveRecord::Base
   # Extensions
   acts_as_taggable
 
+  # Configuration
+  default_scope -> { includes(:bookmarks) }
+
   # Associations
   has_many :bookmarks
   has_many :users, -> { includes(:bookmarks).where(bookmarks: { private: false }) }, through: :bookmarks
@@ -20,7 +23,8 @@ class Link < ActiveRecord::Base
   before_create :fetch_from_embedly
 
   # Scopes
-  scope :for_user, ->(user) { joins(:bookmarks).where(bookmarks: { user_id: user }) }
+  scope :for_user, ->(user) { where(bookmarks: { user_id: user }) }
+  scope :visible_for, ->(user) { joins(:bookmarks).where('bookmarks.private = \'f\' OR bookmarks.user_id = ?', user.id).uniq }
 
   # Instance Methods
   def liked_by?(user)

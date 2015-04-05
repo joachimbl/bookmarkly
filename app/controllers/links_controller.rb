@@ -4,7 +4,7 @@ class LinksController < ApplicationController
 
   # GET /links
   def index
-    @links = Link.order(created_at: :desc)
+    @links = Link.order(created_at: :desc).visible_for(current_user)
     @links = @links.tagged_with(params[:tags]) if params[:tags].present?
     @links = @links.for_user(@user) if @user
   end
