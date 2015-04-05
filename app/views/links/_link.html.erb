@@ -29,7 +29,7 @@
           <%= link_to url_with_protocol(link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
             <h2 class="title gt-reset">
               <%= link.title %>
-              <% if user_signed_in? && link.bookmark_for(current_user).private? %>
+              <% if user_signed_in? && link.bookmark_for(current_user).try(:private?) %>
                 <small><span class="label label-danger">Private</span></small>
               <% end %>
             </h2>
