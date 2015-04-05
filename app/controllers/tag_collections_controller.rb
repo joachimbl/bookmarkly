@@ -10,7 +10,7 @@ class TagCollectionsController < ApplicationController
   def create
     @tag_collection = TagCollection.create(tag_collection_create_params)
 
-    redirect_to links_path(tags: @tag_collection.tag_list_string), notice: 'Tag collection was successfully created.', class: 'well'
+    redirect_to links_path(tags: @tag_collection.tag_list_string), notice: 'You are now following this collection.', class: 'well'
   end
 
 private

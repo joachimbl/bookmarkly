@@ -23,5 +23,5 @@ en:
   site:
     secondary_header:
       follow_tags:
-        one: Follow tag
-        other:  Follow tag collection
+        one: Follow this tag
+        other:  Follow this tag collection
