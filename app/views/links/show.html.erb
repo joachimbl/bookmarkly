@@ -47,7 +47,7 @@
             <div class="panel-body">
               <h1 class="title gt-reset">
                 <%= @link.title %>
-                <% if @link.bookmark_for(current_user).private? %>
+                <% if user_signed_in? && @link.bookmark_for(current_user).try(:private?) %>
                   <span class="label label-danger">Private</span>
                 <% end %>
               </h1>
