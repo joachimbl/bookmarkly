@@ -4,7 +4,8 @@ class LinksController < ApplicationController
   # GET /links
   def index
     @scoped_user = User.find_by_username(params[:user_id]) if params[:user_id]
-    @tag_collection = current_user.tag_collections.tagged_with(params[:tags], match_all: true).first || TagCollection.new(tag_list: params[:tags])
+    @tag_collection = current_user.tag_collections.tagged_with(params[:tags], match_all: true).first if user_signed_in?
+    @tag_collection ||= TagCollection.new(tag_list: params[:tags])
 
     @links = policy_scope(Link).order(created_at: :desc)
     @links = @links.tagged_with(params[:tags]) if params[:tags].present?
