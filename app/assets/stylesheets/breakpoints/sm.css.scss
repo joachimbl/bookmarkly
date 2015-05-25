@@ -1,6 +1,10 @@
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
+  .link-input {
+    display: block;
+    visibility: visible;
+  }
   .header {
     .input-group {
       margin-top: 25px;

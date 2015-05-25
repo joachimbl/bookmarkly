@@ -7,6 +7,20 @@
   }
 }
 
+.link-input-toggle {
+  border: 0px;
+  background: transparent;
+  color: #2ecc71;
+  position: absolute;
+  right: 15px;
+  top: 30px;
+}
+
+.info-toggle-xs {
+  @extend .link-input-toggle;
+
+  top: 50px;
+}
 .secondary-header {
   background: $brand-darken;
 }

@@ -1,15 +1,23 @@
 <div class="container-fluid header">
   <div class="row">
     <div class="container relative">
+      <% if user_signed_in? %>
+        <button class="visible-xs link-input-toggle" type="button" data-toggle="collapse" data-target=".link-input" aria-expanded="false" aria-controls="link input">
+          <%= icon 'chain', '', class: "fa-2x" %>
+        </button>
+      <% else %>
+        <button class="info-toggle-xs visible-xs" type="button" data-toggle="collapse" data-target="#info-field" aria-expanded="false" aria-controls="collapseExample">
+          <%#= icon 'play-circle-o', '', class: 'fa-2x' %>
+        </button>
+      <% end %>
       <div class="row">
         <div class="col-xs-5 col-sm-3">
           <%= link_to root_url do %>
             <%= image_tag ('browzery-beta.png'), class: "img-responsive gt-vrt-lg logo", title: "logo" %>
           <% end %>
         </div>
-
         <% if user_signed_in? %>
-          <div class="col-xs-12 col-sm-9">
+          <div class="col-xs-12 col-sm-9 link-input collapse">
             <%= form_tag new_link_path, method: 'GET', enforce_utf8: false do |f| %>
               <div class="input-group input-group-lg">
                 <%= text_field_tag :url, nil, class: "form-control input-lg", placeholder: "http://" %>
@@ -21,19 +29,18 @@
             <% end %>
           </div>
         <% else %>
-          <div class="col-xs-7 col-md-9">
+          <div class="col-xs-7 col-sm-9">
             <div class="pull-right gt-top">
               <%= link_to 'Sign up now', new_user_registration_path, class: 'btn btn-default gt-right' %>
               <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-primary' %>
             </div>
           </div>
+          <div class="row info-field-trigger text-center absolute gt-vrt-lg full-width hidden-xs">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#info-field" aria-expanded="false" aria-controls="collapseExample">
+              <%#= icon 'play-circle-o', '', class: 'fa-3x' %>
+            </button>
+          </div>
         <% end %>
-      </div>
-
-      <div class="row info-field-trigger text-center absolute gt-vrt-lg full-width">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#info-field" aria-expanded="false" aria-controls="collapseExample">
-          <%#= icon 'play-circle-o', '', class: 'fa-3x' %>
-        </button>
       </div>
 
       <div class="row collapse" id="info-field">
