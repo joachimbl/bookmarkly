@@ -1,0 +1,128 @@
+.header {
+  background: $brand-primary;
+  padding-left: 15px;
+
+  .input-group {
+    margin-top: 40px;
+  }
+
+  .help-block {
+    color: #eee;
+  }
+}
+
+.secondary-header {
+  background: $brand-darken;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.login-form {
+  .actions {
+    small {
+      margin: 9px;
+    }
+  }
+}
+
+.filter {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  .select2-container .select2-choices, .form-control {
+    box-shadow: none !important;
+    border: 0 !important;
+    background-color: transparent !important;
+  }
+
+  .select2-container {
+    &:before {
+      @extend .fa;
+      @extend .pull-left;
+
+      margin-top: 8px;
+      content: "\f002";
+    }
+  }
+}
+
+.user-nav {
+  .btn {
+    padding: 21px;
+    border-radius: 0px;
+    border-color: #ecf0f1;
+    background: #f5f5f5;
+
+    span {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.follow-btn {
+  margin-top: 5px;
+  background: #ccc;
+}
+
+.btn-facebook {
+  @extend .btn-default;
+
+  color: #fff;
+  background: #3a5795;
+  border-color: #133783;
+
+  &:hover {
+    color: #fff;
+    background: #133783;
+  }
+}
+
+.btn-muted {
+  background: #ddd;
+}
+
+.info-field-trigger {
+  top: 15px;
+
+  & button {
+    color: #eee;
+  }
+}
+
+.btn-private {
+  &:after {
+    content: "Public";
+  }
+
+  &:before {
+    @extend .fa;
+
+    content: "\f0ac";
+  }
+
+  &.active {
+    background: $brand-danger;
+    color: #fff;
+
+    &:after {
+      content: "Private";
+    }
+
+    &:before {
+      @extend .fa;
+
+      content: "\f023";
+    }
+  }
+}
+
+.panel-title {
+  font-size: 14px;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
