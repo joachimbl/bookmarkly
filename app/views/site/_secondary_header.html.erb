@@ -1,61 +1,67 @@
 <div class="container-fluid secondary-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="filter">
-          <div class="pull-left">
-            <%= form_tag polymorphic_path([@scoped_user, Link]), method: 'GET', enforce_utf8: false, data: { form: 'search' } do |f| %>
-              <%= text_field_tag :tags, params[:tags], class: 'form-control tag-search', data: { placeholder: 'Search filter', input: 'select2', select: 'search', options: { multiple: true, data: tag_collection } } %>
-            <% end %>
-          </div>
-          <div class="pull-left">
-            <% if params[:tags].present? %>
-              <% if @tag_collection.new_record? %>
-                <%= form_for @tag_collection do |f| %>
-                  <%= f.hidden_field :tag_list, value: @tag_collection.tag_list_string %>
-                  <%= f.submit t('.follow_tags',  count: @tag_collection.tag_list.count), class: 'btn btn-xs follow-btn' %>
-                <% end %>
-              <% else %>
-                <%= link_to t('.unfollow_tags',  count: @tag_collection.tag_list.count), @tag_collection, method: :delete, class: 'btn btn-xs follow-btn' %>
+  <div class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-8 col-sm-6">
+          <div class="filter">
+            <div class="pull-left">
+              <%= form_tag polymorphic_path([@scoped_user, Link]), method: 'GET', enforce_utf8: false, data: { form: 'search' } do |f| %>
+                <%= text_field_tag :tags, params[:tags], class: 'form-control tag-search', data: { placeholder: 'Search filter', input: 'select2', select: 'search', options: { multiple: true, data: tag_collection } } %>
               <% end %>
-            <% end %>
+            </div>
+            <div class="pull-left">
+              <% if params[:tags].present? %>
+                <% if user_signed_in? %>
+                  <% if @tag_collection.new_record? %>
+                    <%= form_for @tag_collection do |f| %>
+                      <%= f.hidden_field :tag_list, value: @tag_collection.tag_list_string %>
+                      <%= f.submit t('.follow_tags',  count: @tag_collection.tag_list.count), class: 'btn btn-xs follow-btn' %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to t('.unfollow_tags',  count: @tag_collection.tag_list.count), @tag_collection, method: :delete, class: 'btn btn-xs follow-btn' %>
+                  <% end %>
+                <% else %>
+                  <%= link_to t('.follow_tags',  count: @tag_collection.tag_list.count), new_user_registration_path, class: "btn btn-xs follow-btn" %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class="clearfix"></div>
         </div>
-      </div>
-      <div class="col-sm-6 hidden-xs">
-        <% if user_signed_in? %>
-          <div class="btn-group pull-right user-nav">
-            <%= link_to user_links_path(current_user), class: "btn btn-default" do %>
-              <%= icon 'user', '', class: 'fa-fw' %> <%= current_user.username %>
-            <% end %>
-            <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-              <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to user_links_path(current_user) do %>
-                  <%= icon 'chain', 'My links', class: 'fa-fw' %></a>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to user_tag_collections_path(current_user) do %>
-                  <%= icon 'cubes', 'Following tag', class: 'fa-fw' %></a>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to edit_user_registration_path do %>
-                  <%= icon 'cog', 'Settings', class: 'fa-fw' %></a>
-                <% end %>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to destroy_user_session_path, :method => :delete do %>
-                  <%= icon 'ban', 'Sign out', class: 'fa-fw' %></a>
-                <% end %>
-              </li>
-            </ul>
-          </div>
-        <% end %>
+        <div class="col-xs-4 col-sm-6">
+          <% if user_signed_in? %>
+            <div class="btn-group pull-right user-nav">
+              <%= link_to user_links_path(current_user), class: "btn btn-default" do %>
+                <%= icon 'user', '', class: 'fa-fw' %> <span class="hidden-xs"><%= current_user.username %></span>
+              <% end %>
+              <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="fa fa-caret-down"></span></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to user_links_path(current_user) do %>
+                    <%= icon 'chain', 'My links', class: 'fa-fw' %></a>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to user_tag_collections_path(current_user) do %>
+                    <%= icon 'rss', 'Following', class: 'fa-fw' %></a>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to edit_user_registration_path do %>
+                    <%= icon 'cog', 'Settings', class: 'fa-fw' %></a>
+                  <% end %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to destroy_user_session_path, :method => :delete do %>
+                    <%= icon 'ban', 'Sign out', class: 'fa-fw' %></a>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

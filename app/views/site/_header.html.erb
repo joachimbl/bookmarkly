@@ -2,8 +2,14 @@
   <div class="row">
     <div class="container relative">
       <div class="row">
-        <div class="col-md-9 col-md-push-3">
-          <% if user_signed_in? %>
+        <div class="col-xs-5 col-sm-3">
+          <%= link_to root_url do %>
+            <%= image_tag ('browzery-beta.png'), class: "img-responsive gt-vrt-lg logo", title: "logo" %>
+          <% end %>
+        </div>
+
+        <% if user_signed_in? %>
+          <div class="col-xs-12 col-sm-9">
             <%= form_tag new_link_path, method: 'GET', enforce_utf8: false do |f| %>
               <div class="input-group input-group-lg">
                 <%= text_field_tag :url, nil, class: "form-control input-lg", placeholder: "http://" %>
@@ -13,22 +19,15 @@
               </div>
               <span class="help-block">Insert links to articles, blogposts, images, videos etc</span>
             <% end %>
-          <% else %>
-
+          </div>
+        <% else %>
+          <div class="col-xs-7 col-md-9">
             <div class="pull-right gt-top">
               <%= link_to 'Sign up now', new_user_registration_path, class: 'btn btn-default gt-right' %>
               <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-primary' %>
             </div>
-
-          <% end %>
-        </div>
-        <div class="clearfix visible-xs"></div>
-
-        <div class="col-md-3 col-md-pull-9">
-          <%= link_to root_url do %>
-            <%= image_tag ('browzery-beta.png'), class: "img-responsive gt-vrt-lg logo", title: "logo" %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
 
       <div class="row info-field-trigger text-center absolute gt-vrt-lg full-width">

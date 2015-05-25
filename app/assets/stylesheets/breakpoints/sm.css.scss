@@ -1,0 +1,31 @@
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+
+  .header {
+    .input-group {
+      margin-top: 25px;
+    }
+  }
+
+  .link-media {
+    max-height: none;
+    overflow: none;
+  }
+
+  .cards {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .user-nav {
+    .btn {
+      padding: 21px;
+      margin-right: 0px;
+
+      span {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+}
