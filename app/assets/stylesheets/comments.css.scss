@@ -1,0 +1,29 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments {
+  margin-top: 15px;
+}
+
+.comment {
+  .comment-body {
+    padding-top: 15px;
+  }
+
+  .btn-xs {
+    padding-left: 0px;
+    visibility: hidden;
+  }
+
+  &:hover {
+    .btn-xs {
+      visibility: visible;
+    }
+  }
+}
+
+.comment-child {
+  margin-top: 10px;
+  border-top: 1px solid #ccc;
+}

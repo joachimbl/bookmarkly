@@ -266,3 +266,14 @@
   border-radius: 2px;
   border: none;
 }
+
+.opacity-hover {
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.btn-primary {
+  color: #eee;
+  border-color: #eee;
+}
