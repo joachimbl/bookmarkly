@@ -30,15 +30,13 @@
         <% end %>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <%= content_for?(:second_level_layout) ? yield(:second_level_layout) : yield %>
-      </div>
-    </div>
-
   </div>
-<small class="text-center col-xs-12"><%= mail_to "hello@browzery.com", "Contact Browzery", class: "text-muted" %></small>
+
+  <div class="container">
+    <%= content_for?(:second_level_layout) ? yield(:second_level_layout) : yield %>
+  </div>
+
+  <small class="text-center col-xs-12"><%= mail_to "hello@browzery.com", "Contact Browzery", class: "text-muted" %></small>
 
 </body>
 </html>

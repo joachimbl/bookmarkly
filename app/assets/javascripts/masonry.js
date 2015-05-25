@@ -1,22 +1,18 @@
 $(document).on('page:change', function() {
+  init_masonry();
+});
+
+function init_masonry(){
   var $container = $('#masonry-container');
 
   $container.imagesLoaded( function(){
     $container.masonry({
       itemSelector: '.box',
-      isAnimated: !Modernizr.csstransitions,
+      isAnimated: true
     });
   });
-});
+}
 
-
-jQuery(function(){
-  var windowWidth = $(window).width();
-
-  $(window).resize(function() {
-    if(windowWidth != $(window).width()){
-      location.reload();
-      return;
-    }
-  });
+$(window).resize(function () {
+  init_masonry();
 });

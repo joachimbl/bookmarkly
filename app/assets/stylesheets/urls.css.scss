@@ -1,9 +1,12 @@
 // Place all the styles related to the urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.box {
+  display: inline-block;
+  vertical-align: top;
+}
 
 .cards {
-  position: relative;
 
   .card-load {
     @extend .text-center;
