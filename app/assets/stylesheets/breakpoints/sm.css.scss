@@ -1,7 +1,7 @@
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
-  .link-input {
+  .link-input, #show-tags {
     display: block;
     visibility: visible;
   }
@@ -19,6 +19,13 @@
   .cards {
     margin-left: 0px;
     margin-right: 0px;
+
+    .panel-body {
+      padding-left: 15px;
+    }
+    .title {
+      font-size: 18px;
+    }
   }
 
   .user-nav {
