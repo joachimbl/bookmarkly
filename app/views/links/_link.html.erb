@@ -41,7 +41,7 @@
               <%= link.description.to_s.truncate(140) %>
             </p>
           <% end %>
-          <div class="collapse" id="show-tags-<%= dom_id(link) %>">
+          <div class="collapse tag-container" id="show-tags-<%= dom_id(link) %>">
             <%= render link.tags %>
           </div>
         </div>

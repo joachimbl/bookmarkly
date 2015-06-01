@@ -24,7 +24,7 @@
       padding-left: 15px;
     }
     .title {
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 
@@ -38,5 +38,10 @@
         padding-right: 10px;
       }
     }
+  }
+
+  .tag-container {
+   visibility: visible;
+   display: block;
   }
 }
