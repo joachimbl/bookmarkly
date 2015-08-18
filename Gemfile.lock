@@ -100,6 +100,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.2.1)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.3)
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
@@ -256,6 +259,7 @@ DEPENDENCIES
   font-awesome-sass (~> 4.2.0)
   foreman
   jquery-rails
+  kaminari
   mailcatcher
   masonry-rails (~> 0.2.4)
   omniauth-facebook

@@ -1,10 +1,18 @@
 <%= content_tag :div, class: "vote #{'voted' if liked}" do %>
   <span class="badge">
-    <%= link_to_unless liked, like_link_path(link), remote: true, method: 'POST' do %>
+    <% if user_signed_in? %>
+      <%= link_to_unless liked, like_link_path(link), remote: true, method: 'POST' do %>
+        <%= icon 'caret-up' %>
+        <span class="like-count text-inline">
+          <%= count %>
+        </span>
+      <% end %>
+    <% else %>
       <%= icon 'caret-up' %>
       <span class="like-count text-inline">
         <%= count %>
       </span>
     <% end %>
+
   </span>
 <% end %>
