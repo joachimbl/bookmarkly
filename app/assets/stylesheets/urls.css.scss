@@ -54,9 +54,36 @@
   }
 
   .row {
+    .help-text {
+      position: absolute;
+      visibility: hidden;
+      text-align: center;
+      top: 15px;
+      left: 37%;
+      margin: 0px auto;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      i {
+        display: block;
+        font-size: 40px;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        background: #222;
+        padding: 17px;
+        color: #fff;
+      }
+    }
+
     &:hover {
-      .lead-img, .title, .description {
-        opacity: 0.6;
+      .lead-img, .title, .description, .tag-container {
+        opacity: 0.2;
+      }
+
+      .help-text {
+        visibility: visible;
+        opacity: 1;
       }
     }
   }
@@ -67,8 +94,8 @@
     margin-right: 4px;
   }
 
-  .panel-body {
-    padding-left: 0px;
+  .link-media {
+    padding-right: 0px;
   }
 
   .title {

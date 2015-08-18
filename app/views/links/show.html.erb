@@ -1,10 +1,12 @@
-<div class="row">
+<div class="row cards">
 
-  <%= content_tag :div, class: "col-sm-6 cards", id: dom_id(@link) do %>
+  <%= content_tag :div, class: "col-sm-6", id: dom_id(@link) do %>
 
     <div class="panel panel-default card">
       <div class="panel-heading">
-        <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+        <% if @link.favicon_url.present? == true %>
+          <%= image_tag @link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+        <% end %>
         <h2 class="panel-title gt-reset text-inline pull-left">
           <%= link_to @link.provider_name, @link.provider_url, target: '_blank', rel: 'nofollow', data: { outbound_link: true } %>
         </h2>
@@ -65,7 +67,9 @@
     <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
 
     <% if policy(@link).add? %>
-      <%= link_to 'Add link', add_link_path(@link), method: 'POST' %>
+      <%= link_to add_link_path(@link), method: 'POST' do %>
+      <span class="btn btn-default btn-xs"><i class="fa fa-plus"></i> Add link to my collection</span>
+      <% end %>
     <% end %>
   <% end %>
 

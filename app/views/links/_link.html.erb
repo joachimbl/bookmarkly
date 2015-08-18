@@ -1,7 +1,9 @@
 <%= content_tag :div, class: "box col-xs-12 col-sm-4 col-md-3 col-lg-3", id: dom_id(link) do %>
   <div class="panel panel-default card">
     <div class="panel-heading">
+      <% if link.favicon_url.present? == true %>
       <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+      <% end %>
       <h3 class="panel-title gt-reset text-inline pull-left">
         <%= link_to link.provider_name, link_path(link) %>
       </h3>
@@ -28,6 +30,7 @@
         <% end %>
       </div>
       <div class="col-xs-7 col-sm-12">
+        <div class="help-text hidden-xs hidden-sm"><i class="fa fa-share-square-o"></i>Go to link</div>
         <div class="panel-body">
           <%= link_to url_with_protocol(link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
             <h2 class="title gt-reset">

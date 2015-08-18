@@ -21,6 +21,7 @@
 
   top: 50px;
 }
+
 .secondary-header {
   background: $brand-darken;
 }
@@ -50,6 +51,7 @@ a:hover {
   .select2-container {
     position: inherit;
     min-width: 200px;
+    max-width: 300px;
 
     &:before {
       @extend .fa;
