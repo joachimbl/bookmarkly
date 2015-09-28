@@ -2,11 +2,15 @@
   <div class="panel panel-default card">
     <div class="panel-heading">
       <% if link.favicon_url.present? == true %>
-      <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left gt-right" %>
+      <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left middle" %>
       <% end %>
       <h3 class="panel-title gt-reset text-inline pull-left">
-        <%= link_to link.provider_name, link_path(link) %>
+        <%= link_to url_with_protocol(link.url), title: 'Visit website', target: '_blank', rel: 'nofollow', class: 'btn btn-xs middle', data: { outbound_link: true, toggle: 'tooltip', placement: 'top', container: 'body' } do %>
+          <%= link.provider_name %>
+          <i class="fa gt-left text-muted fa-external-link right"></i>
+        <% end %>
       </h3>
+
       <div class="votes">
         <%= render 'links/likes', link: link, count: link.likes_count, liked: link.liked_by?(current_user) %>
       </div>
@@ -23,16 +27,15 @@
             <%= raw link.html %>
           </div>
         <% elsif link.thumbnail_url.present? %>
-          <%= link_to url_with_protocol(link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
+          <%= link_to link_path(link), class: 'link-img middle' do %>
             <%= image_tag link.thumbnail_url, class: "img-responsive center-block lead-img" %>
           <% end%>
           <%# TODO: Add container with dominant color if there is no image to the link %>
         <% end %>
       </div>
       <div class="col-xs-7 col-sm-12">
-        <div class="help-text hidden-xs hidden-sm"><i class="fa fa-share-square-o"></i>Go to link</div>
         <div class="panel-body">
-          <%= link_to url_with_protocol(link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
+          <%= link_to link_path(link) do %>
             <h2 class="title gt-reset">
               <%= link.title %>
               <% if user_signed_in? && link.bookmark_for(current_user).try(:private?) %>
