@@ -1,7 +1,7 @@
 // Place all the styles related to the urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.link-media {
+.link-img {
   max-height: 220px;
   overflow: hidden;
 }
@@ -49,49 +49,37 @@
   @extend .paper-shadow;
   @extend .relative;
 
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transition: -webkit-transform 200ms ease, box-shadow 200ms ease;
+  -moz-transition: -moz-transform 200ms ease, box-shadow 200ms ease;
+  -o-transition: -o-transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  z-index: 1;
+
   a {
     color: #222;
   }
 
-  .row {
-    .help-text {
-      position: absolute;
-      visibility: hidden;
-      text-align: center;
-      top: 15px;
-      left: 37%;
-      margin: 0px auto;
-      font-weight: 700;
-      text-transform: uppercase;
+  .label-link {
+    display: inline-block;
+    margin-top: 8px;
+    margin-right: 4px;
 
-      i {
-        display: block;
-        font-size: 40px;
-        height: 70px;
-        width: 70px;
-        border-radius: 50%;
-        background: #222;
-        padding: 17px;
+    .label {
+      background: transparent;
+      border: 1px solid #eee;
+      color: #999;
+      font-weight: 400;
+
+      &:hover {
+        background: $brand-primary;
         color: #fff;
       }
     }
-
-    &:hover {
-      .lead-img, .title, .description, .tag-container {
-        opacity: 0.2;
-      }
-
-      .help-text {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
-  }
-
-  .label-link {
-    display: inline-block;
-    margin-top: 5px;
-    margin-right: 4px;
   }
 
   .link-media {

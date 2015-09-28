@@ -12,11 +12,6 @@
     }
   }
 
-  .link-media {
-    max-height: none;
-    overflow: none;
-  }
-
   .cards {
     margin-left: 0px;
     margin-right: 0px;
@@ -26,6 +21,19 @@
     }
     .title {
       font-size: 14px;
+    }
+  }
+
+  .card {
+    &:hover {
+      -webkit-transform: translateY(-4px);
+      -moz-transform: translateY(-4px);
+      -o-transform: translateY(-4px);
+      -ms-transform: translateY(-4px);
+      transform: translateY(-4px);
+      -webkit-box-shadow: 0 6px 7px rgba(0,0,0,0.25),0 24px 48px rgba(0,0,0,0.25);
+      box-shadow: 0 6px 7px rgba(0,0,0,0.25),0 24px 48px rgba(0,0,0,0.25);
+      z-index: 2;
     }
   }
 
