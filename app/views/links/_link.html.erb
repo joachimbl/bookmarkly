@@ -1,15 +1,15 @@
 <%= content_tag :div, class: "box col-xs-12 col-sm-4 col-md-3 col-lg-3", id: dom_id(link) do %>
   <div class="panel panel-default card">
     <div class="panel-heading">
-      <% if link.favicon_url.present? == true %>
-      <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left middle" %>
-      <% end %>
-      <h3 class="panel-title gt-reset text-inline pull-left">
-        <%= link_to url_with_protocol(link.url), title: 'Visit website', target: '_blank', rel: 'nofollow', class: 'btn btn-xs middle', data: { outbound_link: true, toggle: 'tooltip', placement: 'top', container: 'body' } do %>
-          <%= link.provider_name %>
-          <i class="fa gt-left text-muted fa-external-link right"></i>
+      <%= link_to url_with_protocol(link.url), title: 'Visit website', target: '_blank', rel: 'nofollow', class: '', data: { outbound_link: true, toggle: 'tooltip', placement: 'top', container: 'body' } do %>
+        <% if link.favicon_url.present? == true %>
+          <%= image_tag link.favicon_url, width: '16px', class: "img-responsive favicon left middle gt-right" %>
         <% end %>
-      </h3>
+        <h3 class="panel-title gt-reset text-inline pull-left">
+          <%= link.provider_name.to_s.truncate(20) %>
+          <i class="fa gt-left text-muted fa-external-link right"></i>
+        </h3>
+      <% end %>
 
       <div class="votes">
         <%= render 'links/likes', link: link, count: link.likes_count, liked: link.liked_by?(current_user) %>
