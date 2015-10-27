@@ -65,6 +65,10 @@
       <% end %>
     </div>
 
+    <%= link_to url_with_protocol(@link.url), target: '_blank', rel: 'nofollow', data: { outbound_link: true } do %>
+      <button class="btn btn-primary btn-block btn-lg pointer gt-bottom">Visit link <%= icon('share', '', class: 'gt-left') %></button>
+    <% end %>
+
     <strong>Shared by:</strong>
     <%= raw @link.users.map { |user| link_to user.username.humanize, user_links_path(user) }.join(', ') %>
 
