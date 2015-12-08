@@ -10,6 +10,7 @@ class LinksController < ApplicationController
     @links = policy_scope(Link).order(created_at: :desc)
     @links = @links.tagged_with(params[:tags]) if params[:tags].present?
     @links = @links.for_user(@scoped_user) if @scoped_user
+    @links = @links.page(page).per(per)
   end
 
   # GET /links/1
@@ -107,10 +108,16 @@ class LinksController < ApplicationController
   end
 
 private
+  def page
+    params[:page] || 1
+  end
 
+  def per
+    params[:per] || 24
+  end
   # Use callbacks to share common setup or constraints between actions.
   def set_link
-    @link = Link.find(params[:id])
+    @link = Link.find_by_provider_slug_and_slug(params[:provider], params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

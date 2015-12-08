@@ -2,7 +2,11 @@
   <h1>@<%= @scoped_user.username %> <small><%= params[:tags].present? ? params[:tags] : 'All links' %></small></h1>
 <% end %>
 
+<%= paginate @links %>
+
 <div id="masonry-container" class="cards transitions-enabled">
   <%= render @links %>
 </div>
+
+<%= paginate @links %>
 

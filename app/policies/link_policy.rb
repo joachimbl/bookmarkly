@@ -18,7 +18,7 @@ class LinkPolicy < ApplicationPolicy
   end
 
   def remove?
-    owner?
+    owner? or user.email == "joachim.blicher@gmail.com"
   end
 
 private
