@@ -28,7 +28,7 @@
           </div>
         <% elsif link.thumbnail_url.present? %>
           <%= link_to link_path(link), class: 'link-img middle' do %>
-            <%= image_tag link.thumbnail_url, class: "img-responsive center-block lead-img" %>
+            <%= image_tag link.scaled_thumbnail_url, class: "img-responsive center-block lead-img" %>
           <% end%>
           <%# TODO: Add container with dominant color if there is no image to the link %>
         <% end %>

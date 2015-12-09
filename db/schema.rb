@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405101522) do
+ActiveRecord::Schema.define(version: 20151110174123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,12 @@ ActiveRecord::Schema.define(version: 20150405101522) do
     t.datetime "updated_at",                 null: false
     t.integer  "likes_count",    default: 0, null: false
     t.integer  "comments_count", default: 0, null: false
+    t.string   "slug"
+    t.string   "provider_slug"
   end
+
+  add_index "links", ["provider_slug"], name: "index_links_on_provider_slug", using: :btree
+  add_index "links", ["slug"], name: "index_links_on_slug", using: :btree
 
   create_table "tag_collections", force: :cascade do |t|
     t.datetime "created_at", null: false
