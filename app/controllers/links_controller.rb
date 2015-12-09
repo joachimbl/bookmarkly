@@ -117,7 +117,7 @@ private
   end
   # Use callbacks to share common setup or constraints between actions.
   def set_link
-    @link = Link.find_by_provider_slug_and_slug(params[:provider], params[:id])
+    @link = Link.find(params[:provider], params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
